@@ -2,6 +2,10 @@
     margin-left: 2%;
 }
 
-.fa-search {
-    margin-right: 30px;
+.search-box {
+    width: 400px;
+}
+
+.break {
+    width: 100px
 }
