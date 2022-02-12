@@ -1,11 +1,17 @@
+/* Base.html */
+
 .brand-logo {
     margin-left: 2%;
 }
 
 .search-box {
-    width: 400px;
+    width: 370px;
 }
 
-.break {
-    width: 100px
+.fa-bars {
+    color: black;
+}
+
+.top-nav {
+    margin-right: 2%;
 }
