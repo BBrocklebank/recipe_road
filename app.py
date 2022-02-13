@@ -32,6 +32,12 @@ def get_recipes():
     return render_template("recipes.html", recipes=recipes)
 
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    return redirect(url_for('get_recipes'))
+
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "127.0.0.1"),
             port=int(os.environ.get("PORT", 5000)),
