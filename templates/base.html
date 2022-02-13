@@ -24,8 +24,31 @@
         <nav class="white">
             <form>
                 <div class="nav-wrapper">
-                    <a href="#" class="brand-logo red-text">Recipe Road</a>
+                    <a href="#" class="brand-logo red-text hide-on-med-and-down">Recipe Road</a>
+                    <a href="#" class="brand-logo red-text left hide-on-large-only">Recipe Road</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+
+                    <ul class="hide-on-large-only right">
+                        <li class="search-box">
+                            <div class="center row">
+                                <div class="col s12">
+                                    <div class="center row" id="topbarsearch">
+                                        <div class="input-field red-text">
+                                            <input type="text" placeholder="Find a Recipe" name="search"
+                                                id="search autocomplete-input" class="autocomplete red-text"
+                                                aria-label="Search" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <button type="submit" name='search' class="btn-flat white">
+                                Search
+                            </button>
+                        </li>
+                    </ul>
+
                     <ul class="hide-on-med-and-down right top-nav">
                         <li class="search-box">
                             <div class="center row">
@@ -80,30 +103,33 @@
                 <form class="col s12">
                     <div class="row">
                         <div class="input-field col s6">
-                            <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+                            <input placeholder="Placeholder" id="first_name" type="text" minlength="2" 
+                                maxlength='13' class="validate" required>
                             <label for="first_name">First Name</label>
                         </div>
                         <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate">
+                            <input id="last_name" type="text" minlength="2" maxlength='15' class="validate" 
+                                required>
                             <label for="last_name">Last Name</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="username" name="username" type="text" 
-                                class="validate" required>
+                            <input id="username" name="username" type="text" minlength="5" 
+                                maxlength='15' class="validate" required>
                             <label for="username">Username</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password" type="password" class="validate">
+                            <input id="password" type="password" minlength="5" maxlength='15' 
+                                class="validate" required>
                             <label for="password">Password</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="email" type="email" class="validate">
+                            <input id="email" type="email" class="validate" required>
                             <label for="email">Email</label>
                         </div>
                     </div>
