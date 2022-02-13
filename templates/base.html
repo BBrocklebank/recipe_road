@@ -24,8 +24,8 @@
         <nav class="white">
             <form>
                 <div class="nav-wrapper text-shadow">
-                    <a href="#" class="brand-logo red-text hide-on-med-and-down">Recipe Road</a>
-                    <a href="#" class="brand-logo red-text left hide-on-large-only">Recipe Road</a>
+                    <a href="{{ url_for('get_recipes') }}" class="brand-logo red-text hide-on-med-and-down">Recipe Road</a>
+                    <a href="{{ url_for('get_recipes') }}" class="brand-logo red-text left hide-on-large-only">Recipe Road</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
 
                     <ul class="hide-on-large-only right">
@@ -68,7 +68,7 @@
                                 Search
                             </button>
                         </li>
-                        <li><a href="#" class="red-text">Home</a></li>
+                        <li><a href="{{ url_for('get_recipes') }}" class="red-text">Home</a></li>
                         <li><a href="#" class="red-text">Profile</a></li>
                         <li><a href="#" class="red-text">Add Recipe</a></li>
                         <li><a class="red-text modal-trigger" href="#modal1">Login</a></li>
@@ -84,7 +84,7 @@
             <li>
                 <h4 class="red-text center-align">Recipe Road
             </li>
-            <li><a href="">Home</a></li>
+            <li><a href="{{ url_for('get_recipes') }}">Home</a></li>
             <li><a href="">Profile</a></li>
             <li><a href="">Add Recipe</a></li>
             <li><a href="">Log Out</a></li>
