@@ -34,6 +34,19 @@ def get_recipes():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    """
+    Main app for site, linking Jinga templates to python functions.
+    Function then interact with MongoDB
+    """
+    if request.method == 'POST':
+        #check if username already exists in db
+        existing_user = mongo.db.users.find_one(
+            {'username': request.form.get('username').lower()})
+
+        if existing_user:
+            flash('Username already exists')
+            return redirect(url_for('register')) #Return user to start of function to try again
+
     return redirect(url_for('get_recipes'))
 
 
