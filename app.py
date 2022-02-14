@@ -28,6 +28,9 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_recipes")
 def get_recipes():
+    """
+    Function for recipes app route, retrieves
+    """
     recipes = list(mongo.db.recipes.find())
     return render_template("recipes.html", recipes=recipes)
 
@@ -35,17 +38,31 @@ def get_recipes():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     """
-    Main app for site, linking Jinga templates to python functions.
-    Function then interact with MongoDB
+    Function for register app route. Registers new users with db.
     """
     if request.method == 'POST':
-        #check if username already exists in db
-        existing_user = mongo.db.users.find_one(
+        #check if username or email already exists in db
+        existing_username = mongo.db.users.find_one(
             {'username': request.form.get('username').lower()})
+        existing_email = mongo.db.users.find_one(
+            {'email': request.form.get('email').lower()})
 
-        if existing_user:
+        if existing_username:
             flash('Username already exists')
-            return redirect(url_for('register')) #Return user to start of function to try again
+            return
+
+        if existing_email:
+            flash('Email already registered')
+            return
+                      
+        register_user = {
+            'username': request.form.get('username').lower(),
+            'password': generate_password_hash(request.form.get('password')),
+            'first_name': request.form.get('first_name').lower(),
+            'last_name': request.form.get('last_name').lower(),
+            'email': request.form.get('email').lower(),
+        }
+        mongo.db.users.insert_one(register_user)
 
     return redirect(url_for('get_recipes'))
 
