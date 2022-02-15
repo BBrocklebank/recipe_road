@@ -24,8 +24,11 @@
         <nav class="white">
             <form>
                 <div class="nav-wrapper text-shadow">
-                    <a href="{{ url_for('get_recipes') }}" class="brand-logo red-text hide-on-med-and-down">Recipe Road</a>
-                    <a href="{{ url_for('get_recipes') }}" class="brand-logo red-text left hide-on-large-only">Recipe Road</a>
+                    <a href="{{ url_for('get_recipes') }}" 
+                        class="brand-logo red-text hide-on-med-and-down">Recipe Road</a>
+                    <a href="{{ url_for('get_recipes') }}" 
+                        class="brand-logo red-text left hide-on-large-only">Recipe Road</a>
+                        
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
 
                     <ul class="hide-on-large-only right">
@@ -97,7 +100,18 @@
             <div class="modal-content container">
                 <h4 class="center-align">Login</h4>
                 <h4 class="center-align">Register</h4>
-                <p class="center-align">Create an account to share and edit your own unique recipes to the Recipe Road!</p>
+                <p class="center-align">Create an account to share and edit your own unique recipes to the Recipe Road!
+                </p>
+                <!--flash messages-->
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="row flashes">
+                                <h4 class="h4 center-align">{{ message }}</h4>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
             </div>
             <!-- Form -->
             <div class="row container">
@@ -105,29 +119,29 @@
                     <!-- First Name -->
                     <div class="row">
                         <div class="input-field col s6">
-                            <input placeholder="Placeholder" id="first_name" name="first_name" type="text" minlength="2" 
+                            <input placeholder="Placeholder" id="first_name" name="first_name" type="text" minlength="2"
                                 maxlength='13' class="validate" pattern='^[a-zA-Z]{2,13}$' required>
                             <label for="first_name">First Name</label>
                         </div>
                         <!-- Last Name -->
                         <div class="input-field col s6">
-                            <input id="last_name" name="last_name" type="text" minlength="2" maxlength='15' class="validate" 
-                                pattern='^[a-zA-Z]{2,13}$' required>
+                            <input id="last_name" name="last_name" type="text" minlength="2" maxlength='15'
+                                class="validate" pattern='^[a-zA-Z]{2,13}$' required>
                             <label for="last_name">Last Name</label>
                         </div>
                     </div>
                     <!-- Username -->
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="username" name="username" type="text" minlength="5" 
-                                maxlength='15' class="validate" pattern='^[a-zA-Z0-9]{5,15}$' required>
+                            <input id="username" name="username" type="text" minlength="5" maxlength='15'
+                                class="validate" pattern='^[a-zA-Z0-9]{5,15}$' required>
                             <label for="username">Username</label>
                         </div>
                     </div>
                     <!-- Password -->
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password" name="password" type="password" minlength="6" maxlength='15' 
+                            <input id="password" name="password" type="password" minlength="6" maxlength='15'
                                 class="validate" pattern='[^ ]{5,15}' required>
                             <label for="password">Password</label>
                         </div>
@@ -141,7 +155,9 @@
                     </div>
                     <!-- Form Submit -->
                     <div class="row submit-btn">
-                        <button class="btn-flat waves-effect" type="submit"><h6>Submit</h6></button>
+                        <button class="btn-flat waves-effect" type="submit">
+                            <h6>Submit</h6>
+                        </button>
                     </div>
                 </form>
             </div>
