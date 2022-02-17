@@ -119,7 +119,7 @@
                     <!-- First Name -->
                     <div class="row">
                         <div class="input-field col s6">
-                            <input placeholder="Placeholder" id="first_name" name="first_name" type="text" minlength="2"
+                            <input id="first_name" name="first_name" type="text" minlength="2"
                                 maxlength='13' class="validate" pattern='^[a-zA-Z]{2,13}$' required>
                             <label for="first_name">First Name</label>
                         </div>
@@ -140,10 +140,15 @@
                     </div>
                     <!-- Password -->
                     <div class="row">
-                        <div class="input-field col s12">
+                        <div class="input-field col s6">
                             <input id="password" name="password" type="password" minlength="6" maxlength='15'
                                 class="validate" pattern='[^ ]{5,15}' required>
                             <label for="password">Password</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="password_check" name="password_check" type="password" minlength="6" maxlength='15'
+                                class="validate" pattern='[^ ]{5,15}' required>
+                            <label for="password_check">Repeat Password</label>
                         </div>
                     </div>
                     <!-- Email  -->
