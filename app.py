@@ -41,12 +41,12 @@ def register():
     Function for register app route. Registers new users with db.
     """
     if request.method == 'POST':
-        #check if username or email already exists in db
+        #check if username or email exists in db
         existing_username = mongo.db.users.find_one(
             {'username': request.form.get('username').lower()})
         existing_email = mongo.db.users.find_one(
             {'email': request.form.get('email').lower()})
-           
+
         password = request.form.get('password')
         password_check = request.form.get('password_check')
 
@@ -74,6 +74,10 @@ def register():
             'email': request.form.get('email').lower(),
         }
         mongo.db.users.insert_one(register_user)
+
+        #Places user in session
+        session['user'] = request.form.get('username').lower()
+        flash('Registration Succesful!')
 
     return redirect(url_for('get_recipes'))
 

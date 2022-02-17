@@ -182,13 +182,20 @@
 
     <script>
 
-    let formErrors = $('.flash_message').text();
-
+        // Opens modal to display flash messages
+    let formMessages = $('.flash_message').text();
     $(document).ready(function() {
-        if (formErrors) {
+        if (formMessages) {
             $('.modal').modal('open');
-            console.log(formErrors)
         }
+
+        // Sets text colour based on flash message
+        if (formMessages == 'Registration Succesful!') {
+            $('.flash_message').css('color', 'green');
+        } else {
+            $('.flash_message').css('color', 'red');
+        }
+
     });
 
     </script>
