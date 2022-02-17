@@ -49,15 +49,15 @@ def register():
 
         if existing_username and existing_email:
             flash('Username and email already exist')
-            return redirect(url_for('register'))
+            return redirect(url_for('get_recipes'))
 
         elif existing_username:
             flash('Username already exists')
-            return redirect(url_for('register'))
+            return redirect(url_for('get_recipes'))
 
         elif existing_email:
             flash('Email already registered')
-            return redirect(url_for('register'))
+            return redirect(url_for('get_recipes'))
 
         register_user = {
             'username': request.form.get('username').lower(),

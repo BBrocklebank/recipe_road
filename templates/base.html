@@ -38,7 +38,7 @@
                                     <div class="center row" id="topbarsearch">
                                         <div class="input-field red-text">
                                             <input type="text" placeholder="Find a Recipe" name="search"
-                                                id="search autocomplete-input" class="autocomplete red-text"
+                                                id="search-lg autocomplete-input" class="autocomplete red-text"
                                                 aria-label="Search" required>
                                         </div>
                                     </div>
@@ -59,7 +59,7 @@
                                     <div class="center row" id="topbarsearch">
                                         <div class="input-field red-text">
                                             <input type="text" placeholder="Find a Recipe" name="search"
-                                                id="search autocomplete-input" class="autocomplete red-text"
+                                                id="search-sml autocomplete-input" class="autocomplete red-text"
                                                 aria-label="Search" required>
                                         </div>
                                     </div>
@@ -172,8 +172,35 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
     {% block scripts %}
+
+    <script>
+
+    let formErrors;
+
+    {% with messages = get_flashed_messages() %}
+
+        {% if messages %}
+            formErrors = true;
+            console.log('true test');
+        {% else %}
+            formErrors = false;
+            console.log('false test');
+        {% endif %}
+
+    {% endwith %}
+
+    $(document).ready(function() {
+        if (formErrors) {
+            $('.modal').modal('open'); 
+        }
+    });
+
+    </script>
+
     {% endblock %}
+
 </body>
 
 </html>
