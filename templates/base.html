@@ -74,9 +74,9 @@
                         <li><a href="{{ url_for('get_recipes') }}" class="red-text">Home</a></li>
                         <li><a href="#" class="red-text">Profile</a></li>
                         <li><a href="#" class="red-text">Add Recipe</a></li>
-                        <li><a class="red-text modal-trigger" href="#modal1">Login</a></li>
-                        <li><a class="red-text modal-trigger" href="#modal1">Logout</a></li>
-                        <li><a class="red-text modal-trigger" href="#modal1">Register</a></li>
+                        <li><a class="red-text login_btn modal-trigger" href="#modal1">Login</a></li>
+                        <li><a class="red-text logout_btn modal-trigger" href="#modal1">Logout</a></li>
+                        <li><a class="red-text register_btn modal-trigger" href="#modal1">Register</a></li>
                     </ul>
                 </div>
             </form>
@@ -87,12 +87,12 @@
             <li>
                 <h4 class="red-text center-align">Recipe Road
             </li>
-            <li><a href="{{ url_for('get_recipes') }}">Home</a></li>
-            <li><a href="">Profile</a></li>
-            <li><a href="">Add Recipe</a></li>
-            <li><a href="">Log Out</a></li>
-            <li><a href="">Log In</a></li>
-            <li><a href="">Register</a></li>
+            <li><a class="" href="{{ url_for('get_recipes') }}">Home</a></li>
+            <li><a class="" href="">Profile</a></li>
+            <li><a class="" href="">Add Recipe</a></li>
+            <li><a class="login_btn modal-trigger" href="#modal1">Login</a></li>
+            <li><a class="logout_btn modal-trigger" href="#modal1">Log Out</a></li>
+            <li><a class="register_btn modal-trigger" href="#modal1">Register</a></li>
         </ul>
 
         <!-- Modal -->
@@ -115,7 +115,7 @@
             </div>
             <!-- Form -->
             <div class="row container">
-                <form class="col s12" method="post" action='{{ url_for("register") }}' name="login_form">
+                <form class="col s12 form" method="POST" action='' name="login_form">
                     <!-- First Name -->
                     <div class="row">
                         <div class="input-field col s6">
