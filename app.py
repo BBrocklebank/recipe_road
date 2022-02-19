@@ -29,7 +29,7 @@ mongo = PyMongo(app)
 @app.route("/get_recipes")
 def get_recipes():
     """
-    Function for recipes app route, retrieves
+    Retrieves all recipes.
     """
     recipes = list(mongo.db.recipes.find())
     return render_template("recipes.html", recipes=recipes)
@@ -38,7 +38,7 @@ def get_recipes():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     """
-    Function for register app route. Registers new users with db.
+    Registers new users with db.
     """
     if request.method == 'POST':
         #check if username or email exists in db
@@ -81,6 +81,16 @@ def register():
 
     return redirect(url_for('get_recipes'))
 
+
+@app.route('/logout')
+def logout():
+    """
+    Logout current session user.
+    """
+    # remove user from session cookies
+    flash('You have been logged out')
+    session.pop('user')
+    return redirect(url_for('get_recipes'))
 
 
 if __name__ == "__main__":
