@@ -27,9 +27,10 @@ $(document).ready(function () {
   });
 
   $( ".login_btn" ).click(function() {
+    $('.form_name').remove();
+    $('.form_email').remove();
+    $('.password_check').remove();
+    $('.password').removeClass( "s6" ).addClass( "s12" );
     $('.form').attr('action', '{{ url_for("login") }}');
   });
 
-  $( ".logout_btn" ).click(function() {
-    $('.form').attr('action', '{{ url_for("logout") }}');
-  });

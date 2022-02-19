@@ -75,7 +75,7 @@
                         {% if session.user %}
                         <li><a href="#" class="red-text">Profile</a></li>
                         <li><a href="#" class="red-text">Add Recipe</a></li>
-                        <li><a class="red-text logout_btn modal-trigger" href="#modal1">Logout</a></li>
+                        <li><a class="red-text logout_btn" href="{{ url_for('logout') }}">Logout</a></li>
                         {% else %}
                         <li><a class="red-text login_btn modal-trigger" href="#modal1">Login</a></li>
                         <li><a class="red-text register_btn modal-trigger" href="#modal1">Register</a></li>
@@ -120,7 +120,7 @@
             <div class="row container">
                 <form class="col s12 form" method="POST" action='' name="login_form">
                     <!-- First Name -->
-                    <div class="row">
+                    <div class="row form_name">
                         <div class="input-field col s6">
                             <input id="first_name" name="first_name" type="text" minlength="2"
                                 maxlength='13' class="validate" pattern='^[a-zA-Z]{2,13}$' required>
@@ -143,19 +143,19 @@
                     </div>
                     <!-- Password -->
                     <div class="row">
-                        <div class="input-field col s6">
+                        <div class="input-field password col s6">
                             <input id="password" name="password" type="password" minlength="6" maxlength='15'
                                 class="validate" pattern='[^ ]{5,15}' required>
                             <label for="password">Password</label>
                         </div>
-                        <div class="input-field col s6">
+                        <div class="input-field col s6 password_check">
                             <input id="password_check" name="password_check" type="password" minlength="6" maxlength='15'
                                 class="validate" pattern='[^ ]{5,15}' required>
                             <label for="password_check">Repeat Password</label>
                         </div>
                     </div>
                     <!-- Email  -->
-                    <div class="row">
+                    <div class="row form_email">
                         <div class="input-field col s12">
                             <input id="email" name="email" type="email" class="validate" required>
                             <label for="email">Email</label>
