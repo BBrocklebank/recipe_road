@@ -72,11 +72,14 @@
                             </button>
                         </li>
                         <li><a href="{{ url_for('get_recipes') }}" class="red-text">Home</a></li>
+                        {% if session.user %}
                         <li><a href="#" class="red-text">Profile</a></li>
                         <li><a href="#" class="red-text">Add Recipe</a></li>
-                        <li><a class="red-text login_btn modal-trigger" href="#modal1">Login</a></li>
                         <li><a class="red-text logout_btn modal-trigger" href="#modal1">Logout</a></li>
+                        {% else %}
+                        <li><a class="red-text login_btn modal-trigger" href="#modal1">Login</a></li>
                         <li><a class="red-text register_btn modal-trigger" href="#modal1">Register</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </form>
