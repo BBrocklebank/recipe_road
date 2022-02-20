@@ -15,9 +15,15 @@ $(document).ready(function () {
 
     // Sets text colour based on flash message
 
-    // ADD ALL ERROR MESSAGES AND SET TO RED -- FIX
-    if (formMessages == 'Registration Succesful!') { 
-        $('.flash_message').css('color', 'green');
+    error1 = 'Username and email already exist';
+    error2 = 'Username already exists';
+    error3 = 'Email already registered';
+    error4 = 'Passwords must match';
+    error5 = 'Incorrect Username and/or Password';
+    error6 = 'Incorrect Username and/or Password';
+
+    if ([error1, error2, error3, error4, error5, error6].includes(formMessages)) {
+        $('.flash_message').css('color', 'red');
     } else {
         $('.flash_message').css('color', 'green');
     }
