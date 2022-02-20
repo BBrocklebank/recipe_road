@@ -31,7 +31,7 @@ $(document).ready(function () {
 
 // Removes/Adds from elements, action & attributes
 
-$(".login_btn").click(function () {
+$(".login_btn, .logout_btn").click(function () {
     $('.modal_title').text('Login');
     $('.modal_description').text('Login to your account and start sharing recipes instantly!');
     $('#first_name, #last_name, #email, #password_check').attr('required', false);
