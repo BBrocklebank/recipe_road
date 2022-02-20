@@ -14,27 +14,25 @@ $(document).ready(function () {
     }
 
     // Sets text colour based on flash message
-    if (formMessages == 'Registration Succesful!') {
+
+    // ADD ALL ERROR MESSAGES AND SET TO RED -- FIX
+    if (formMessages == 'Registration Succesful!') { 
         $('.flash_message').css('color', 'green');
     } else {
-        $('.flash_message').css('color', 'red');
+        $('.flash_message').css('color', 'green');
     }
 });
 
-// Removes/Adds from elements and action
+// Removes/Adds from elements, action & attributes
 
 $(".login_btn").click(function () {
-    $('.form_name').hide();
-    $('.form_email').hide();
-    $('.password_check').hide();
+    $('#first_name, #last_name, #email, #password_check').attr('required', false);
+    $('.form_name, .form_email, .password_check').hide();
     $('.password').removeClass("s6").addClass("s12");
-    $('.form').attr('action', '{{ url_for("login") }}');
 });
 
 $(".register_btn").click(function () {
-    $('.form_name').show();
-    $('.form_email').show();
-    $('.password_check').show();
+    $('.form_name, .form_email, .password_check').show();
+    $('#first_name, #last_name, #email, #password_check').attr('required', true);
     $('.password').removeClass("s12").addClass("s6");
-    $('.form').attr('action', '{{ url_for("register") }}');
 });
