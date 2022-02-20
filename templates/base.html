@@ -119,6 +119,7 @@
             </div>
             <!-- Form -->
             <div class="row container">
+                {% if session.user is not defined %}
                 <form class="col s12 form" method="POST" action="" name="login_form">
                     <!-- First Name -->
                     <div class="row form_name">
@@ -169,6 +170,7 @@
                         </button>
                     </div>
                 </form>
+                {% endif %}
             </div>
         </div>
 
