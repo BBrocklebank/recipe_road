@@ -93,6 +93,39 @@ def logout():
     return redirect(url_for('get_recipes'))
 
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    """
+    Logs existing users into their profile.
+    """
+    if request.method == 'POST':
+        # Check if username exits in db
+        existing_user = mongo.db.users.find_one(
+            {'username': request.form.get('username').lower()})
+
+        if existing_user:
+            # Ensure hashed password matches user input
+            if check_password_hash(existing_user['password'], request.form.get('password')):
+                session['user'] = request.form.get('username').lower()
+                flash('Welcome, {}'.format(
+                    request.form.get('username')))
+                return redirect(
+                    url_for('get_recipes', username=session['user']))
+
+            else:
+                # invalid password match
+                flash('Incorrect Username and/or Password')
+                return redirect(url_for('get_recipes'))
+
+        else:
+            # username doesn't exist
+            flash('Incorrect Username and/or Password')
+            return redirect(url_for('get_recipes'))
+
+    return redirect(url_for('get_recipes'))
+
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP", "127.0.0.1"),
             port=int(os.environ.get("PORT", 5000)),
