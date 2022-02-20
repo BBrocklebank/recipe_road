@@ -21,16 +21,20 @@ $(document).ready(function () {
     }
 });
 
-// Alters form route depending on nav button selected
- $( ".register_btn" ).click(function() {
-    $('.form').attr('action', '{{ url_for("register") }}');
-  });
+// Removes/Adds from elements and action
 
-  $( ".login_btn" ).click(function() {
-    $('.form_name').remove();
-    $('.form_email').remove();
-    $('.password_check').remove();
-    $('.password').removeClass( "s6" ).addClass( "s12" );
+$(".login_btn").click(function () {
+    $('.form_name').hide();
+    $('.form_email').hide();
+    $('.password_check').hide();
+    $('.password').removeClass("s6").addClass("s12");
     $('.form').attr('action', '{{ url_for("login") }}');
-  });
+});
 
+$(".register_btn").click(function () {
+    $('.form_name').show();
+    $('.form_email').show();
+    $('.password_check').show();
+    $('.password').removeClass("s12").addClass("s6");
+    $('.form').attr('action', '{{ url_for("register") }}');
+});
