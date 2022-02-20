@@ -32,12 +32,16 @@ $(document).ready(function () {
 // Removes/Adds from elements, action & attributes
 
 $(".login_btn").click(function () {
+    $('.modal_title').text('Login');
+    $('.modal_description').text('Login to your account and start sharing recipes instantly!');
     $('#first_name, #last_name, #email, #password_check').attr('required', false);
     $('.form_name, .form_email, .password_check').hide();
     $('.password').removeClass("s6").addClass("s12");
 });
 
 $(".register_btn").click(function () {
+    $('.modal_title').text('Register');
+    $('.modal_description').text('Create an account to share and edit your own unique recipes to the Recipe Road!');
     $('.form_name, .form_email, .password_check').show();
     $('#first_name, #last_name, #email, #password_check').attr('required', true);
     $('.password').removeClass("s12").addClass("s6");
