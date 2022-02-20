@@ -88,8 +88,8 @@ def logout():
     Logout current session user.
     """
     # remove user from session cookies
-    flash('You have been logged out')
     session.pop('user')
+    flash('You have been logged out')
     return redirect(url_for('get_recipes'))
 
 

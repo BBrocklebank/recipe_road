@@ -91,11 +91,14 @@
                 <h4 class="red-text center-align">Recipe Road
             </li>
             <li><a class="" href="{{ url_for('get_recipes') }}">Home</a></li>
+            {% if session.user %}
             <li><a class="" href="">Profile</a></li>
             <li><a class="" href="">Add Recipe</a></li>
-            <li><a class="login_btn modal-trigger" href="#modal1">Login</a></li>
             <li><a class="logout_btn modal-trigger" href="#modal1">Log Out</a></li>
+            {% else %}
+            <li><a class="login_btn modal-trigger" href="#modal1">Login</a></li>
             <li><a class="register_btn modal-trigger" href="#modal1">Register</a></li>
+            {% endif %}
         </ul>
 
         <!-- Modal -->
