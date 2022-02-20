@@ -34,8 +34,8 @@ $(document).ready(function () {
 $(".login_btn, .logout_btn").click(function () {
     $('.modal_title').text('Login');
     $('.modal_description').text('Login to your account and start sharing recipes instantly!');
-    $('#first_name, #last_name, #email, #password_check').attr('required', false);
     $('.form_name, .form_email, .password_check').hide();
+    $('#first_name, #last_name, #email, #password_check').attr('required', false);
     $('.password').removeClass("s6").addClass("s12");
 });
 
@@ -45,4 +45,8 @@ $(".register_btn").click(function () {
     $('.form_name, .form_email, .password_check').show();
     $('#first_name, #last_name, #email, #password_check').attr('required', true);
     $('.password').removeClass("s12").addClass("s6");
+});
+
+$(".logout_btn").click(function () {
+    alert('You have been logged out')
 });

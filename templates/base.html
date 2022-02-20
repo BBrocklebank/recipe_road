@@ -75,7 +75,7 @@
                         {% if session.user %}
                         <li><a href="#" class="red-text">Profile</a></li>
                         <li><a href="#" class="red-text">Add Recipe</a></li>
-                        <li><a class="red-text logout_btn" href="{{ url_for('logout') }}">Logout</a></li>
+                        <li><a class="red-text logout_btn modal-trigger" action="#modal1" href="{{ url_for('logout') }}">Logout</a></li>
                         {% else %}
                         <li><a class="red-text login_btn modal-trigger" href="#modal1">Login</a></li>
                         <li><a class="red-text register_btn modal-trigger" href="#modal1">Register</a></li>
@@ -94,7 +94,7 @@
             {% if session.user %}
             <li><a class="" href="">Profile</a></li>
             <li><a class="" href="">Add Recipe</a></li>
-            <li><a class="logout_btn modal-trigger" href="#modal1">Log Out</a></li>
+            <li><a class="logout_btn modal-trigger" href="{{ url_for('logout') }}">Log Out</a></li>
             {% else %}
             <li><a class="login_btn modal-trigger" href="#modal1">Login</a></li>
             <li><a class="register_btn modal-trigger" href="#modal1">Register</a></li>
@@ -106,8 +106,7 @@
             <div class="modal-content container">
                 {% if session.user is not defined %}
                     <h4 class="center-align modal_title">Login</h4>
-                    <p class="center-align modal_description">Create an account to share and edit your own unique recipes to the Recipe Road!
-                    </p>
+                    <p class="center-align modal_description"></p>
                 {% endif %}
                 <!--flash messages-->
                 {% with messages = get_flashed_messages() %}
