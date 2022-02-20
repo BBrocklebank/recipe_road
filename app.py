@@ -78,6 +78,7 @@ def register():
         #Places user in session
         session['user'] = request.form.get('username').lower()
         flash('Registration Succesful!')
+        return redirect(url_for('profile', user=session['user']))
 
     return redirect(url_for('get_recipes'))
 
@@ -123,6 +124,20 @@ def login():
 
     return redirect(url_for('get_recipes'))
 
+
+@app.route('/profile/<user>', methods=['GET', 'POST'])
+def profile(user):
+    """
+    Grab session user's information from db
+    """
+    user = mongo.db.users.find_one(
+         {'username': session['user']}, {'password': 0, '_id': 0})
+     #Prevent users forcing to another profile 
+     # and if cookie error takes user to login page
+    if session['user']:
+        return render_template('profile.html', user=user)
+    
+    return redirect(url_for('login'))
 
 
 if __name__ == "__main__":
