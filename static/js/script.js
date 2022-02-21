@@ -29,7 +29,7 @@ $(document).ready(function () {
     }
 });
 
-// Removes/Adds from elements, action & attributes
+// Removes/Adds login from elements, actions & attributes
 
 $(".login_btn, .logout_btn").click(function () {
     $('.modal_title').text('Login');
@@ -49,4 +49,10 @@ $(".register_btn").click(function () {
 
 $(".logout_btn").click(function () {
     alert('You have been logged out')
+});
+
+// Unlocks profile details for editing
+
+$(".profile_edit").click(function () {
+    $('#first_name, #last_name, #email, #username').removeAttr('readonly');
 });
