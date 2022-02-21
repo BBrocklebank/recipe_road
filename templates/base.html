@@ -198,6 +198,10 @@
             $('.form').attr("action", "{{ url_for('register') }}");
         });
 
+        $(".profile_edit").click(function () { 
+            $('.form').attr("action", "{{ url_for('edit_profile') }}");
+        });
+
     </script>
 
     {% endblock %}
