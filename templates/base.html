@@ -75,7 +75,7 @@
                         {% if session.user %}
                         <li><a href="{{ url_for('profile', user=session['user']) }}" class="red-text">Profile</a></li>
                         <li><a href="#" class="red-text">Add Recipe</a></li>
-                        <li><a class="red-text logout_btn modal-trigger" action="#modal1" href="{{ url_for('logout') }}">Logout</a></li>
+                        <li><a class="red-text logout_btn modal-trigger" href="{{ url_for('logout') }}">Logout</a></li>
                         {% else %}
                         <li><a class="red-text login_btn modal-trigger" href="#modal1">Login</a></li>
                         <li><a class="red-text register_btn modal-trigger" href="#modal1">Register</a></li>
