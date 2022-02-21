@@ -6,26 +6,75 @@
     <div class="row">
         <div class="col s12 m10 xl8 offset-m1 offset-xl2">
             <div class="card-panel">
-                <h3 class="center-align profile_title black-text">
+                <h3 class="center-align profile_title black-text text-shadow">
                     {{ user.first_name.capitalize() }}'s Profile
                 </h3>
                 <br>
                 <h4>Details:</h4>
-                <p class="flow-text">
-                    First Name: {{ user.first_name.capitalize() }}
-                </p>
-                <p class="flow-text">
-                    Last Name: {{ user.last_name.capitalize() }}
-                </p>
-                <p class="flow-text">
-                    Username: {{ user.username }}
-                </p>
-                <p class="flow-text">
-                    Email: {{ user.email }}
-                </p>
 
+                 <!-- Edit Details Form -->
+            <div class="row container">
+                <form class="col s12 form" method="POST" action="" name="login_form">
+                    <!-- First Name -->
+                    <div class="row form_name">
+                        <div class="input-field col s6">
+                            <input id="first_name" name="first_name" type="text" minlength="2"
+                                maxlength='13' class="validate" value="{{ user.first_name.capitalize() }}" 
+                                    pattern='^[a-zA-Z]{2,13}$' readonly="readonly" required>
+                            <label for="first_name">First Name</label>
+                        </div>
+                        <!-- Last Name -->
+                        <div class="input-field col s6">
+                            <input id="last_name" name="last_name" type="text" minlength="2" maxlength='15'
+                                class="validate" value="{{ user.last_name.capitalize() }}" pattern='^[a-zA-Z]{2,13}$' 
+                                    readonly="readonly" required>
+                            <label for="last_name">Last Name</label>
+                        </div>
+                    </div>
+                    <!-- Username -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="username" name="username" type="text" minlength="5" maxlength='15'
+                                class="validate" value="{{ user.username }}" pattern='^[a-zA-Z0-9]{5,15}$' 
+                                    readonly="readonly" required>
+                            <label for="username">Username</label>
+                        </div>
+                    </div>
+                    <!-- Email  -->
+                    <div class="row form_email">
+                        <div class="input-field col s12">
+                            <input id="email" name="email" type="email" class="validate" 
+                                value="{{ user.email }}"  readonly="readonly" required>
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <!-- Edit/Submit/Password Change -->
+                    <div class="row submit-btn">
+                        <a class="btn-flat waves-effect profile_edit">
+                            <h6>Edit</h6>
+                        </a>
+                        <button class="btn-flat waves-effect" type="submit">
+                            <h6>Submit</h6>
+                        </button>
+                        <a class="btn-flat waves-effect yellow right">
+                            <h6>Change Password</h6>
+                        </a>
+                    </div>
+                </form>
 
+               
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m10 xl8 offset-m1 offset-xl2">
+
+                <h3 class="center-align profile_title text-shadow red-text">
+                    Your Recipes
+                </h3>
+                <div class="divider"></div>
+                
+           
         </div>
     </div>
 
