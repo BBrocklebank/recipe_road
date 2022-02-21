@@ -25,6 +25,9 @@ body {
 }
 
 /* Profile Page */
+.divider {
+    height: 3px;
+}
 
 /* Login Modal */
 
