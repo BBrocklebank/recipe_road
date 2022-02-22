@@ -13,7 +13,7 @@
                 <h4>Details:</h4>
 
                  <!-- Edit Details Form -->
-            <div class="row container">
+            <div class="row">
                 <form class="col s12 form" method="POST" action="{{ url_for('edit_profile', user_id=user._id) }}"
                     name="profile_form">
                     <!-- First Name -->
@@ -52,13 +52,13 @@
                     <!-- Edit/Submit/Password Change -->
                     <div class="row submit-btn">
                         <button class="btn-flat waves-effect light-green" type="submit">
-                            <h6>Save Changed</h6>
+                            <h6 class="profile_btn">Save Changes</h6>
                         </button>
                         <a class="btn-flat waves-effect profile_edit">
-                            <h6>Edit Details</h6>
+                            <h6 class="profile_btn">Edit Details</h6>
                         </a>
                         <a class="btn-flat waves-effect yellow right">
-                            <h6>Change Password</h6>
+                            <h6 class="profile_btn">Change Password</h6>
                         </a>
                     </div>
                 </form>
@@ -69,7 +69,7 @@
     </div>
     <div class="row">
         <div class="col s12 m10 xl8 offset-m1 offset-xl2">
-                <h3 class="center-align profile_title text-shadow red-text">
+                <h3 class="center-align your_recipes profile_title text-shadow red-text">
                     Your Recipes
                 </h3>
                 <div class="divider"></div>
