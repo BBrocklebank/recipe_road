@@ -29,20 +29,6 @@ body {
     height: 3px;
 }
 
-#profile_form {
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
-.profile_btn {
-    font-weight: 600;
-    line-height: 100%;
-}
-
-.profile_title {
-    margin-top: 10px;
-}
-
 /* Login Modal */
 
 /* Media Queries */
