@@ -29,6 +29,14 @@ body {
     height: 3px;
 }
 
+.profile_btn, .profile_title {
+    font-weight: 600;
+}
+
+.your_recipes {
+    margin-top: 10px;
+}
+
 /* Login Modal */
 
 /* Media Queries */
