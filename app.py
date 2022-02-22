@@ -78,7 +78,7 @@ def register():
         #Places user in session
         session['user'] = request.form.get('username').lower()
         flash('Registration Succesful!')
-        return redirect(url_for('profile', user=session['user']))
+        return redirect(url_for('get_recipes', user=session['user']))
 
     return redirect(url_for('get_recipes'))
 
@@ -96,7 +96,7 @@ def logout():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """
-    Logs existing users into their profile.
+    Logs an existing user into their profile.
     """
     if request.method == 'POST':
         # Check if username exits in db
@@ -133,6 +133,7 @@ def profile(user):
     user = mongo.db.users.find_one({'username': session['user']}, {'password': 0})
      #Prevent users forcing to another profile 
      # and if cookie error takes user to login page
+    
     if session['user']:
         return render_template('profile.html', user=user)
     
@@ -167,6 +168,7 @@ def edit_profile(user_id):
             flash('Email already registered')
             return redirect(url_for('profile', user=user))
 
+        # Update db with form data
         edit_user = {
             'username': request.form.get('username').lower(),
             'first_name': request.form.get('first_name').lower(),
@@ -176,9 +178,11 @@ def edit_profile(user_id):
         mongo.db.users.update_one({"_id": ObjectId(user_id)}, {"$set": edit_user})
 
         flash('Update Succesful!')
-
-        return render_template('profile.html', user=user)
-
+        
+        # Update Session User, update user with new db data
+        session['user'] = request.form.get('username').lower()
+        user = mongo.db.users.find_one({'username': session['user']}, {'password': 0})
+        return redirect(url_for('profile', user=user))
 
 
 if __name__ == "__main__":
