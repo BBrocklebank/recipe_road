@@ -107,8 +107,8 @@ def login():
             # Ensure hashed password matches user input
             if check_password_hash(existing_user['password'], request.form.get('password')):
                 session['user'] = request.form.get('username').lower()
-                flash('Welcome, {}'.format(
-                    request.form.get('username')))
+                name = request.form.get('username')
+                flash(f'Welcome, {name}')
                 return redirect(
                     url_for('get_recipes', username=session['user']))
 
@@ -131,12 +131,12 @@ def profile(user):
     Grab session user's information from db
     """
     user = mongo.db.users.find_one({'username': session['user']}, {'password': 0})
-     #Prevent users forcing to another profile 
+     #Prevent users forcing to another profile
      # and if cookie error takes user to login page
-    
+
     if session['user']:
         return render_template('profile.html', user=user)
-    
+
     return redirect(url_for('login'))
 
 
@@ -178,7 +178,7 @@ def edit_profile(user_id):
         mongo.db.users.update_one({"_id": ObjectId(user_id)}, {"$set": edit_user})
 
         flash('Update Succesful!')
-        
+
         # Update Session User, update user with new db data
         session['user'] = request.form.get('username').lower()
         user = mongo.db.users.find_one({'username': session['user']}, {'password': 0})

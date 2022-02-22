@@ -24,11 +24,11 @@
         <nav class="white">
             <form>
                 <div class="nav-wrapper text-shadow">
-                    <a href="{{ url_for('get_recipes') }}" 
+                    <a href="{{ url_for('get_recipes') }}"
                         class="brand-logo red-text hide-on-med-and-down">Recipe Road</a>
-                    <a href="{{ url_for('get_recipes') }}" 
+                    <a href="{{ url_for('get_recipes') }}"
                         class="brand-logo red-text left hide-on-large-only">Recipe Road</a>
-                        
+
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
 
                     <ul class="hide-on-large-only right">
@@ -105,7 +105,7 @@
         <div id="modal1" class="modal">
             <div class="modal-content container">
                 {% if session.user is not defined %}
-                    <h4 class="center-align modal_title">Login</h4>
+                    <h4 class="center-align modal_title"></h4>
                     <p class="center-align modal_description"></p>
                 {% endif %}
                 <!--flash messages-->
@@ -189,12 +189,12 @@
     {% block scripts %}
 
     <script>
-        
+
         $(".login_btn").click(function () {
             $('.form').attr("action", "{{ url_for('login') }}");
         });
 
-        $(".register_btn").click(function () { 
+        $(".register_btn").click(function () {
             $('.form').attr("action", "{{ url_for('register') }}");
         });
 
