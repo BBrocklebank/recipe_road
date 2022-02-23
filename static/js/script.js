@@ -4,6 +4,7 @@ $(document).ready(function () {
         edge: 'right'
     });
     $('.modal').modal();
+    $('.collapsible').collapsible();
 });
 
 // List of Python flash messages
