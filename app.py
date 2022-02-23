@@ -172,11 +172,11 @@ def edit_profile(user_id):
                 return redirect(url_for('profile', user=user))
 
             elif username_exists:
-                flash('Username already exist')
+                flash('Username already exists')
                 return redirect(url_for('profile', user=user))
 
             elif email_exists:
-                flash('Email already exist')
+                flash('Email already exists')
                 return redirect(url_for('profile', user=user))
 
             else:
@@ -186,11 +186,12 @@ def edit_profile(user_id):
                 'username': request.form.get('username').lower(),
                 'email': request.form.get('email').lower()
                 }
+                session['user'] = request.form.get('username').lower()
 
         elif session['user'] != request.form.get('username').lower():
 
             if username_exists:
-                flash('Username already exist')
+                flash('Username already exists')
                 return redirect(url_for('profile', user=user))
 
             else:
@@ -199,11 +200,12 @@ def edit_profile(user_id):
                 'last_name': request.form.get('last_name').lower(),
                 'username': request.form.get('username').lower()
                 }
+                session['user'] = request.form.get('username').lower()
 
         elif user['email'] != request.form.get('email').lower():
 
             if email_exists:
-                flash('Email already exist')
+                flash('Email already exists')
                 return redirect(url_for('profile', user=user))
 
             else:
@@ -223,10 +225,8 @@ def edit_profile(user_id):
 
         flash('Update Succesful!')
 
-        # Update Session User, update user with new db data
-        session['user'] = user['username']
-
-        return redirect(url_for('profile', user=user))
+    user = mongo.db.users.find_one({'_id': ObjectId(user_id)})
+    return redirect(url_for('profile', user=user))
 
 
 if __name__ == "__main__":
