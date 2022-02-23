@@ -176,7 +176,7 @@ def edit_profile(user_id):
                 return redirect(url_for('profile', user=user))
 
             elif email_exists:
-                flash('Email already exists')
+                flash('Email already registered')
                 return redirect(url_for('profile', user=user))
 
             else:
@@ -205,7 +205,7 @@ def edit_profile(user_id):
         elif user['email'] != request.form.get('email').lower():
 
             if email_exists:
-                flash('Email already exists')
+                flash('Email already registered')
                 return redirect(url_for('profile', user=user))
 
             else:
