@@ -4,6 +4,7 @@ Function then interact with MongoDB
 """
 
 
+import email
 import os
 from flask import (
     Flask, flash, render_template,
@@ -114,12 +115,12 @@ def login():
 
             else:
                 # invalid password match
-                flash('Incorrect Username and/or Password')
+                flash('Login: Incorrect Username and/or Password')
                 return redirect(url_for('get_recipes'))
 
         else:
             # username doesn't exist
-            flash('Incorrect Username and/or Password')
+            flash('Login: Incorrect Username and/or Password')
             return redirect(url_for('get_recipes'))
 
     return redirect(url_for('get_recipes'))
@@ -130,6 +131,7 @@ def profile(user):
     """
     Grab session user's information from db
     """
+
     user = mongo.db.users.find_one({'username': session['user']}, {'password': 0})
      #Prevent users forcing to another profile
      # and if cookie error takes user to login page
@@ -147,41 +149,83 @@ def edit_profile(user_id):
     """
 
     if request.method == 'POST':
-        #check if username or email exists in db
 
+        #Existing User data
         user = mongo.db.users.find_one({'_id': ObjectId(user_id)})
 
-        existing_username = mongo.db.users.find_one(
+        username_exists = mongo.db.users.find_one(
             {'username': request.form.get('username').lower()})
-        existing_email = mongo.db.users.find_one(
+        email_exists = mongo.db.users.find_one(
             {'email': request.form.get('email').lower()})
 
-        if existing_username and existing_email:
-            flash('Username and email already exist')
-            return redirect(url_for('profile', user=user))
+        edit_user = {}
 
-        elif existing_username:
-            flash('Username already exists')
-            return redirect(url_for('profile', user=user))
+        # Compares current user data with form data and/or then the database.
+        # Sets dictionary value to be sent to db.
 
-        elif existing_email:
-            flash('Email already registered')
-            return redirect(url_for('profile', user=user))
+        # Do Username and Email need checking
+        if user['email'] != request.form.get(
+            'email').lower() and session['user'] != request.form.get('username').lower():
 
-        # Update db with form data
-        edit_user = {
-            'username': request.form.get('username').lower(),
-            'first_name': request.form.get('first_name').lower(),
-            'last_name': request.form.get('last_name').lower(),
-            'email': request.form.get('email').lower(),
-        }
+            if username_exists and email_exists:
+                flash('Username and email already exist')
+                return redirect(url_for('profile', user=user))
+
+            elif username_exists:
+                flash('Username already exist')
+                return redirect(url_for('profile', user=user))
+
+            elif email_exists:
+                flash('Email already exist')
+                return redirect(url_for('profile', user=user))
+
+            else:
+                edit_user = {
+                'first_name': request.form.get('first_name').lower(),
+                'last_name': request.form.get('last_name').lower(),
+                'username': request.form.get('username').lower(),
+                'email': request.form.get('email').lower()
+                }
+
+        elif session['user'] != request.form.get('username').lower():
+
+            if username_exists:
+                flash('Username already exist')
+                return redirect(url_for('profile', user=user))
+
+            else:
+                edit_user = {
+                'first_name': request.form.get('first_name').lower(),
+                'last_name': request.form.get('last_name').lower(),
+                'username': request.form.get('username').lower()
+                }
+
+        elif user['email'] != request.form.get('email').lower():
+
+            if email_exists:
+                flash('Email already exist')
+                return redirect(url_for('profile', user=user))
+
+            else:
+                edit_user = {
+                'first_name': request.form.get('first_name').lower(),
+                'last_name': request.form.get('last_name').lower(),
+                'email': request.form.get('email').lower()
+                }
+
+        else:
+            edit_user = {
+                'first_name': request.form.get('first_name').lower(),
+                'last_name': request.form.get('last_name').lower(),
+                }
+
         mongo.db.users.update_one({"_id": ObjectId(user_id)}, {"$set": edit_user})
 
         flash('Update Succesful!')
 
         # Update Session User, update user with new db data
-        session['user'] = request.form.get('username').lower()
-        user = mongo.db.users.find_one({'username': session['user']}, {'password': 0})
+        session['user'] = user['username']
+
         return redirect(url_for('profile', user=user))
 
 

@@ -20,14 +20,14 @@
                     <div class="row form_name">
                         <div class="input-field col s6">
                             <input id="first_name" name="first_name" type="text" minlength="2"
-                                maxlength='13' class="validate" value="{{ user.first_name.capitalize() }}" 
+                                maxlength='13' class="validate" value="{{ user.first_name.capitalize() }}"
                                     pattern='^[a-zA-Z]{2,13}$' readonly="readonly" required>
                             <label for="first_name">First Name</label>
                         </div>
                         <!-- Last Name -->
                         <div class="input-field col s6">
                             <input id="last_name" name="last_name" type="text" minlength="2" maxlength='15'
-                                class="validate" value="{{ user.last_name.capitalize() }}" pattern='^[a-zA-Z]{2,13}$' 
+                                class="validate" value="{{ user.last_name.capitalize() }}" pattern='^[a-zA-Z]{2,13}$'
                                     readonly="readonly" required>
                             <label for="last_name">Last Name</label>
                         </div>
@@ -36,7 +36,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="username" name="username" type="text" minlength="5" maxlength='15'
-                                class="validate" value="{{ user.username }}" pattern='^[a-zA-Z0-9]{5,15}$' 
+                                class="validate" value="{{ user.username }}" pattern='^[a-zA-Z0-9]{5,15}$'
                                     readonly="readonly" required>
                             <label for="username">Username</label>
                         </div>
@@ -44,7 +44,7 @@
                     <!-- Email  -->
                     <div class="row form_email">
                         <div class="input-field col s12">
-                            <input id="email" name="email" type="email" class="validate" 
+                            <input id="email" name="email" type="email" class="validate"
                                 value="{{ user.email }}"  readonly="readonly" required>
                             <label for="email">Email</label>
                         </div>
@@ -63,7 +63,7 @@
                     </div>
                 </form>
 
-               
+
             </div>
         </div>
     </div>
@@ -73,8 +73,8 @@
                     Your Recipes
                 </h3>
                 <div class="divider"></div>
-                
-           
+
+
         </div>
     </div>
 
