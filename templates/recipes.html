@@ -14,22 +14,23 @@
                     <strong class="flow-text yellow-text">{{ recipe.recipe_name}}:</strong>
                         &nbsp;&nbsp;<em class="flow-text">created by</em>&nbsp;&nbsp;
                             <strong class="flow-text"></strong>
-                    <div class="chip vertical-align flow-text">
+                    <div class="chip flow-text">
                         <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
                             {{ recipe.created_by }}
                     </div>
                 </div>
                 <div class="collapsible-body">
-                    <div class="chip">
-                        <img src="images/yuna.jpg" alt="user avatar">
-                        Jane Doe
-                    </div>
                     <p>{{ recipe.recipe_description }}</p>
                     <br>
                     <p>{{ recipe.serves }}</p>
                     <br>
-                    <p>{{ recipe.requirements }}</p>
-                    <br>
+
+                    {% for requirement in recipe.requirements %}
+                    <div class="chip">{{ requirement.capitalize() }}</div>
+                    {% endfor %}
+
+
+
                     <p>{{ recipe.indredients }}</p>
                     <ul>
                         {% for step in recipe.steps %}
@@ -42,7 +43,10 @@
                     <br>
                     <p>{{ recipe.vote_down }}</p>
                     <br>
-                    <p>{{ recipe.created_by }}</p>
+                    <div class="chip vertical-align flow-text">
+                        <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
+                            {{ recipe.created_by }}
+                    </div>
                 </div>
             </li>
         </ul>
