@@ -93,10 +93,17 @@
                             by
                         </em>
                         &nbsp;&nbsp;
+                        {% if session.user|lower == recipe.created_by|lower %}
+                        <div class="chip flow-text">
+                            <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
+                            <a href="{{ url_for('profile', user=session['user']) }}">{{ recipe.created_by }}</a>
+                        </div>
+                        {% else %}
                         <div class="chip flow-text">
                             <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
                             {{ recipe.created_by }}
                         </div>
+                        {% endif%}
                         </div>
                         <div class="collapsible-body">
                             <div class="row">
