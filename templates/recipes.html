@@ -11,19 +11,20 @@
             <ul class="collapsible">
                 <li>
                     <div class="collapsible-header white-text red lighten-1 text-shadow">
-                    <i class="fas fa-caret-down"></i>
-                    <strong class="flow-text yellow-text">
-                        {{ recipe.recipe_name}}:
-                    </strong>
-                    &nbsp;&nbsp;
-                    <em class="flow-text">
-                        by
-                    </em>
-                    &nbsp;&nbsp;
-                    <div class="chip flow-text">
-                        <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
-                        {{ recipe.created_by }}
-                    </div>
+                        <i class="fas fa-caret-down"></i>
+                        <strong class="flow-text yellow-text">
+                            {{ recipe.recipe_name}}:
+                        </strong>
+                        &nbsp;&nbsp;
+                        <em class="flow-text">
+                            by
+                        </em>
+                        &nbsp;&nbsp;
+                        <div class="chip flow-text">
+                            <a href="{{ url_for('profile', user=session['user']) }}"></a>
+                            <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
+                            {{ recipe.created_by }}
+                        </div>
                     </div>
                     <div class="collapsible-body">
                         <div class="row">
@@ -51,9 +52,9 @@
                                     <ul class="recipe_list">
                                     {% for requirement in recipe.requirements %}
                                         <li class="recipe_li">
-                                        <div class="chip chip_collapsible">
-                                            <p class="flow-text">{{ requirement.capitalize() }}</p>
-                                        </div>
+                                            <div class="chip chip_collapsible">
+                                                <p class="flow-text">{{ requirement.capitalize() }}</p>
+                                            </div>
                                         </li>
                                     {% endfor %}
                                     </ul>
@@ -66,9 +67,9 @@
                                     <ul class="recipe_list">
                                     {% for ingredient in recipe.ingredients %}
                                         <li class="recipe_li">
-                                        <div class="chip chip_collapsible">
-                                            <p class="flow-text">{{ ingredient.capitalize() }}</p>
-                                        </div>
+                                            <div class="chip chip_collapsible">
+                                                <p class="flow-text">{{ ingredient.capitalize() }}</p>
+                                            </div>
                                         </li>
                                     {% endfor %}
                                     </ul>
@@ -89,6 +90,17 @@
                                 <div class="chip vertical-align flow-text">
                                     <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
                                         {{ recipe.created_by }}
+                                </div>
+                                {% if session.user|lower == recipe.created_by|lower or 'admin' %}
+                                <div class="right">
+                                    <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}"
+                                        class="waves-effect waves-light light-blue lighten-1 btn-large">Edit
+                                    </a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href=""class="waves-effect recipe_delete right waves-light red
+                                        lighten-1 btn-large">Delete
+                                    </a>
+                                {% endif %}
                                 </div>
                             </div>
                         </div>
