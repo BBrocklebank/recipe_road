@@ -4,7 +4,6 @@ Function then interact with MongoDB
 """
 
 
-import email
 import os
 from flask import (
     Flask, flash, render_template,
@@ -228,6 +227,31 @@ def edit_profile(user_id):
 
     user = mongo.db.users.find_one({'_id': ObjectId(user_id)})
     return redirect(url_for('profile', user=user))
+
+
+@app.route('/edit_task/<recipe_id>', methods=['GET', 'POST'])
+def edit_recipe(recipe_id):
+    """
+    Update recipe
+    """
+    if request.method == 'POST':
+        submit = {
+            'cuisine': request.form.get('cuisine'),
+            'recipe_name': request.form.get('recipe_name'),
+            'recipe_description': request.form.get('recipe_description'),
+            'serves': request.form.get('serves'),
+            'requirements': request.form.get('requirements'),
+            'steps': request.form.get('steps'),
+            'vote_up': request.form.get('vote_up'),
+            'vote_down': request.form.get('vote_down'),
+            'created_by': session['user']
+        }
+        mongo.db.tasks.update_one({"_id": ObjectId(recipe_id)}, {"$set": submit})
+        flash("Recipe Successfully Updated")
+
+    recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
+    cuisine = mongo.db.cuisines.find().sort('cuisine_name', 1)
+    return render_template('edit_recipe.html', recipe=recipe, cusisine=cuisine)
 
 
 if __name__ == "__main__":
