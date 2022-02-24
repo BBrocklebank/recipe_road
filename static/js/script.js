@@ -6,6 +6,8 @@ $(document).ready(function () {
     $('.modal').modal();
     $('.collapsible').collapsible();
     $('.chips').chips();
+    $('.tooltipped').tooltip();
+    $('select').formSelect();
 });
 
 // List of Python flash messages
