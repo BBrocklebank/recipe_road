@@ -133,11 +133,12 @@ def profile(user):
     """
 
     user = mongo.db.users.find_one({'username': session['user']}, {'password': 0})
+    recipes = list(mongo.db.recipes.find())
      #Prevent users forcing to another profile
      # and if cookie error takes user to login page
 
     if session['user']:
-        return render_template('profile.html', user=user)
+        return render_template('profile.html', user=user, recipes=recipes)
 
     return redirect(url_for('login'))
 
