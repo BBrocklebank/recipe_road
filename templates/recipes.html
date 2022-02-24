@@ -11,8 +11,9 @@
             <li>
                 <div class="collapsible-header white-text red lighten-1 text-shadow">
                     <i class="fas fa-caret-down"></i>
-                    <strong></strong>
-                    <strong>{{ recipe.recipe_name}}</strong>:&nbsp;<em>created by</em>&nbsp;<strong>{{ recipe.created_by }}</strong>
+                    <strong class="flow-text yellow-text">{{ recipe.recipe_name}}:</strong>
+                        &nbsp;&nbsp;<em class="flow-text">created by</em>&nbsp;&nbsp;
+                            <strong class="flow-text">{{ recipe.created_by }}</strong>
                 </div>
                 <div class="collapsible-body">
                     <p>{{ recipe.recipe_description }}</p>
@@ -24,7 +25,9 @@
                     <p>{{ recipe.indredients }}</p>
                     <ul>
                         {% for step in recipe.steps %}
-                            <li><p>{{ step }}</p></li>
+                        <li>
+                            <p>{{ step }}</p>
+                        </li>
                         {% endfor %}
                     </ul>
                     <p>{{ recipe.vote_up}}</p>
