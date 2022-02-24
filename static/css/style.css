@@ -38,7 +38,13 @@ body {
 }
 
 /* Recipe Display */
-
+.chip {
+    color: rgb(255 67 67);;
+    background-color: #ffffff;
+    border-top: 10px;
+    margin-left: 2px;
+    margin-top: 4px;
+}
 /* Login Modal */
 
 /* Media Queries */
