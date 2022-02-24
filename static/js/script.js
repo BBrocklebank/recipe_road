@@ -8,6 +8,31 @@ $(document).ready(function () {
     $('.chips').chips();
     $('.tooltipped').tooltip();
     $('select').formSelect();
+    $('.chips').chips();
+    $('.chips-initial').chips({
+        data: [{
+        tag: 'Apple',
+        }, {
+        tag: 'Microsoft',
+        }, {
+        tag: 'Google',
+        }],
+    });
+    $('.chips-placeholder').chips({
+        placeholder: 'Enter a tag',
+        secondaryPlaceholder: '+Tag',
+    });
+    $('.chips-autocomplete').chips({
+        autocompleteOptions: {
+        data: {
+            'Apple': null,
+            'Microsoft': null,
+            'Google': null
+        },
+        limit: Infinity,
+        minLength: 1
+        }
+    });
 });
 
 // List of Python flash messages
@@ -75,6 +100,7 @@ $(".logout_btn").click(function () {
 $(".profile_edit").click(function () {
     $('#first_name, #last_name, #email, #username').removeAttr('readonly');
 
+// Materialize select validation bug fix from Code Institute
 validateMaterializeSelect();
 function validateMaterializeSelect() {
     let classValid = { "border-bottom": "1px solid #4caf50", "box-shadow": "0 1px 0 0 #4caf50" };

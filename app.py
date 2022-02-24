@@ -229,11 +229,14 @@ def edit_profile(user_id):
     return redirect(url_for('profile', user=user))
 
 
-@app.route('/edit_task/<recipe_id>', methods=['GET', 'POST'])
+@app.route('/edit_recipe/<recipe_id>', methods=['GET', 'POST'])
 def edit_recipe(recipe_id):
     """
     Update recipe
     """
+
+
+
     if request.method == 'POST':
         submit = {
             'cuisine': request.form.get('cuisine'),
@@ -246,12 +249,12 @@ def edit_recipe(recipe_id):
             'vote_down': request.form.get('vote_down'),
             'created_by': session['user']
         }
-        mongo.db.tasks.update_one({"_id": ObjectId(recipe_id)}, {"$set": submit})
+        mongo.db.recipes.update_one({"_id": ObjectId(recipe_id)}, {"$set": submit})
         flash("Recipe Successfully Updated")
 
     recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
-    cuisine = mongo.db.cuisines.find().sort('cuisine_name', 1)
-    return render_template('edit_recipe.html', recipe=recipe, cusisine=cuisine)
+    cuisines = mongo.db.cuisines.find().sort('cuisine_name', 1)
+    return render_template('edit_recipe.html', recipe=recipe, cuisines=cuisines)
 
 
 if __name__ == "__main__":
