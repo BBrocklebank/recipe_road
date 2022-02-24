@@ -54,14 +54,14 @@ body {
     background-color: white;
 }
 
-.requirements {
+.recipe_list {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
   }
 
-.requirements_li {
+.recipe_li {
     float: left;
   }
 
