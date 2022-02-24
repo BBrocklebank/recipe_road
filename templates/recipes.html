@@ -10,47 +10,74 @@
         <ul class="collapsible">
             <li>
                 <div class="collapsible-header white-text red lighten-1 text-shadow">
-                    <i class="fas fa-caret-down"></i>
-                    <strong class="flow-text yellow-text">{{ recipe.recipe_name}}:</strong>
-                        &nbsp;&nbsp;<em class="flow-text">created by</em>&nbsp;&nbsp;
-                            <strong class="flow-text"></strong>
-                    <div class="chip flow-text">
-                        <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
-                            {{ recipe.created_by }}
-                    </div>
+                <i class="fas fa-caret-down"></i>
+                <strong class="flow-text yellow-text">
+                    {{ recipe.recipe_name}}:
+                </strong>
+                &nbsp;&nbsp;
+                <em class="flow-text">
+                    by
+                </em>
+                &nbsp;&nbsp;
+                <div class="chip flow-text">
+                    <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
+                    {{ recipe.created_by }}
+                </div>
                 </div>
                 <div class="collapsible-body">
-                    <p>{{ recipe.recipe_description }}</p>
-                    <br>
-                    <i class="fas fa-utensils"></i><p>{{ recipe.serves }}</p>
-                    <br>
-                    <i class="fas fa-tools"></i>
-                    {% for requirement in recipe.requirements %}
-                        <div class="chip chip_collapsible">{{ requirement.capitalize() }}</div>
-                    {% endfor %}
-                    <br>
-                    <i class="fas fa-carrot"></i>
-                    {% for ingredient in recipe.ingredients %}
-                        <div class="chip chip_collapsible">{{ ingredient }}</div>
-                    {% endfor %}
-
-
-
-
-                    <ul>
-                        {% for step in recipe.steps %}
-                        <li>
-                            <p>{{ step }}</p>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                    <p>{{ recipe.vote_up}}</p>
-                    <br>
-                    <p>{{ recipe.vote_down }}</p>
-                    <br>
-                    <div class="chip vertical-align flow-text">
-                        <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
-                            {{ recipe.created_by }}
+                    <div class="row">
+                        <div class='col s12 m10 offset-m1 xl10 offset-xl1'>
+                            <!-- Desciption -->
+                            <div class="row flow-text">
+                                <strong>{{ recipe.recipe_description }}</strong>
+                            </div>
+                            <!-- Serves -->
+                            <div class="row">
+                                <i class="fas fa-utensils flow-text">&nbsp;&nbsp;Serves:&nbsp;{{ recipe.serves }}</i>
+                            </div>
+                            <!-- Requirements -->
+                            <div class="row">
+                                <i class="fas fa-tools flow-text"></i>
+                                <ul class="requirements">
+                                {% for requirement in recipe.requirements %}
+                                    <li class="requirements_li">
+                                    <div class="chip chip_collapsible">
+                                        <p class="flow-text">{{ requirement.capitalize() }}</p>
+                                    </div>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                            <!-- Ingredients -->
+                            <div class="row">
+                                <i class="fas fa-carrot flow-text"></i>
+                                {% for ingredient in recipe.ingredients %}
+                                    <div class="chip chip_collapsible">
+                                        <p class="flow-text">{{ ingredient }}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <!-- Steps -->
+                            <div class="row">
+                                <ol class="flow-text">
+                                    {% for step in recipe.steps %}
+                                    <li>
+                                        <p>{{ step }}</p>
+                                    </li>
+                                    {% endfor %}
+                                </ol>
+                            </div>
+                            <!-- Votes -->
+                            <div class="row">
+                                <p>{{ recipe.vote_up}}</p>
+                            <br>
+                                <p>{{ recipe.vote_down }}</p>
+                            </div>
+                            <div class="chip vertical-align flow-text">
+                                <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
+                                    {{ recipe.created_by }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </li>

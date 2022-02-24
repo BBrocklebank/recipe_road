@@ -45,6 +45,27 @@ body {
     margin-left: 2px;
     margin-top: 5px;
 }
+
+.chip_collapsible {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.collapsible-body {
+    background-color: white;
+}
+
+.requirements {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+.requirements_li {
+    float: left;
+  }
+
+
 /* Login Modal */
 
 /* Media Queries */
