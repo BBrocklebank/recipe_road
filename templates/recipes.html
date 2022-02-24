@@ -22,16 +22,21 @@
                 <div class="collapsible-body">
                     <p>{{ recipe.recipe_description }}</p>
                     <br>
-                    <p>{{ recipe.serves }}</p>
+                    <i class="fas fa-utensils"></i><p>{{ recipe.serves }}</p>
                     <br>
-
+                    <i class="fas fa-tools"></i>
                     {% for requirement in recipe.requirements %}
-                    <div class="chip">{{ requirement.capitalize() }}</div>
+                        <div class="chip chip_collapsible">{{ requirement.capitalize() }}</div>
+                    {% endfor %}
+                    <br>
+                    <i class="fas fa-carrot"></i>
+                    {% for ingredient in recipe.ingredients %}
+                        <div class="chip chip_collapsible">{{ ingredient }}</div>
                     {% endfor %}
 
 
 
-                    <p>{{ recipe.indredients }}</p>
+
                     <ul>
                         {% for step in recipe.steps %}
                         <li>
