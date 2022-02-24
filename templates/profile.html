@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
-<main>
 
+<main>
     <div class="row">
         <div class="col s12 m10 xl8 offset-m1 offset-xl2">
             <div class="card-panel">
@@ -12,7 +12,7 @@
                 <br>
                 <h4>Details:</h4>
 
-                 <!-- Edit Details Form -->
+                <!-- Edit Details Form -->
             <div class="row">
                 <form class="col s12 form" method="POST" action="{{ url_for('edit_profile', user_id=user._id) }}"
                     name="profile_form">
@@ -67,17 +67,122 @@
             </div>
         </div>
     </div>
+</main>
+
+<div class="row">
+    <div class="col s12 m10 xl8 offset-m1 offset-xl2">
+            <h3 class="center-align your_recipes profile_title text-shadow red-text">
+                Your Recipes
+            </h3>
+            <div class="divider"></div>
+    </div>
+</div>
+
+{% if session.user %}
+<span>HELLO WORLD</span>
+{% endif %}
+
+{% if session.user %}
+<span>HELLO WORLD</span>
+{% endif %}
+
+{% for recipe in recipes %}
+{% if session.user|lower == recipe.created_by|lower or 'admin' %}
+<section>
     <div class="row">
-        <div class="col s12 m10 xl8 offset-m1 offset-xl2">
-                <h3 class="center-align your_recipes profile_title text-shadow red-text">
-                    Your Recipes
-                </h3>
-                <div class="divider"></div>
-
-
+        <div class="col s12 m10 offset-m1">
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header white-text red lighten-1 text-shadow">
+                    <i class="fas fa-caret-down"></i>
+                    <strong class="flow-text yellow-text">
+                        {{ recipe.recipe_name}}:
+                    </strong>
+                    &nbsp;&nbsp;
+                    <em class="flow-text">
+                        by
+                    </em>
+                    &nbsp;&nbsp;
+                    <div class="chip flow-text">
+                        <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
+                        {{ recipe.created_by }}
+                    </div>
+                    </div>
+                    <div class="collapsible-body">
+                        <div class="row">
+                            <div class='col s12 m10 offset-m1 xl10 offset-xl1'>
+                                <!-- Title -->
+                                <div class="row red-text center-align flow-text">
+                                    <strong>{{ recipe.recipe_name }}</strong>
+                                </div>
+                                <br>
+                                <!-- Desciption -->
+                                <div class="row center-align flow-text">
+                                    <p>{{ recipe.recipe_description }}</p>
+                                </div>
+                                <br>
+                                <br>
+                                <!-- Serves -->
+                                <div class="row">
+                                    <i class="fas fa-utensils flow-text">&nbsp;&nbsp;Serves:&nbsp;{{ recipe.serves }}</i>
+                                </div>
+                                <br>
+                                <br>
+                                <!-- Requirements -->
+                                <div class="row">
+                                    <i class="fas fa-tools flow-text">&nbsp;&nbsp;Requirements:</i>
+                                    <ul class="recipe_list">
+                                    {% for requirement in recipe.requirements %}
+                                        <li class="recipe_li">
+                                        <div class="chip chip_collapsible">
+                                            <p class="flow-text">{{ requirement.capitalize() }}</p>
+                                        </div>
+                                        </li>
+                                    {% endfor %}
+                                    </ul>
+                                </div>
+                                <br>
+                                <br>
+                                <!-- Ingredients -->
+                                <div class="row">
+                                    <i class="fas fa-carrot flow-text">&nbsp;&nbsp;Ingredients:</i>
+                                    <ul class="recipe_list">
+                                    {% for ingredient in recipe.ingredients %}
+                                        <li class="recipe_li">
+                                        <div class="chip chip_collapsible">
+                                            <p class="flow-text">{{ ingredient.capitalize() }}</p>
+                                        </div>
+                                        </li>
+                                    {% endfor %}
+                                    </ul>
+                                </div>
+                                <br>
+                                <br>
+                                <!-- Steps -->
+                                <div class="row">
+                                    <i class="fas fa-list flow-text">&nbsp;&nbsp;Steps:</i>
+                                    <ol class="flow-text">
+                                        {% for step in recipe.steps %}
+                                        <li>
+                                            <p>{{ step }}</p>
+                                        </li>
+                                        {% endfor %}
+                                    </ol>
+                                </div>
+                                <div class="chip vertical-align flow-text">
+                                    <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
+                                        {{ recipe.created_by }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
+</section>
+{% endif %}
+{% endfor %}
 
-</main>
 
 {% endblock %}
