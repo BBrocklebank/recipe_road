@@ -140,73 +140,78 @@ These sketches were created at the very initial design phase following research.
 
 The following wireframes were constructed within Balsamiq(link this) during the Scope Plane section of the design and planning stage for this project. They represent an early design concept that has largely been kept to through to final product. However do note that they vary slightly from the final design, this is due to practical considerations that arose during the surface plane stage. Some design aspects were altered due to time constraints and practical limitations however I feel the main aim of the project has been realised.
 
-[Homepage Dektop](assets/readme/homepage_desktop.png)
+[Homepage Dektop](assets/readme/desktop_homepage-1.png)
 
-[Homepage Tablet](assets/readme/homepage_tablet.png)
+[Homepage Tablet](assets/readme/mobile_homepage-1.png)
 
-[Homepage Phone](assets/readme/homepage_mobile.png)
+[Homepage Phone](assets/readme/ipad_homepage-1.png)
 
-[Contact Dektop](assets/readme/contact_desktop.png)
+[Recipe Dektop](assets/readme/desktop_recipe-1.png)
 
-[Contact Tablet](assets/readme/contact_tablet.png)
+[Recipe Tablet](assets/readme/tablet_recipe-1.png)
 
-[Contact Phone](assets/readme/contact_mobile.png)
+[Recipe Phone](assets/readme/mobile_recipe-1.png))
 
-[Initial Sketch](assets/readme/initial_sketch.jpg)
+[Recipe Edit Page Desktop](assets/readme/desktop_recipe_edit-1.png)
+
+[Recipe Edit Page Tablet](assets/readme/tablet_recipe_edit-1.png)
+
+[Recipe Edit Page Mobile](assets/readme/mobile_recipe_edit-1.png)
+
+[Recipe Edit Page Mobile](assets/readme/tablet_user-1.png)
+
+[Recipe Edit Page Mobile](assets/readme/desktop_user-1.png)
+
+[Recipe Edit Page Mobile](assets/readme/phone_user-1.png)
 
 ### Colours
 
-Card colours used were carefully selected from a colour chart to include all major primary colours and then contrasting colours that suited visually. As seen colours assigned to cards with their names tally and there is continuation in the use of orange for numbers and aqua for letters. This is to prevent the visual aspect of the game becoming too busy or distracting. The colour continuity also provides an aid at the higher level difficulty with some visual memory assistance.
+Colours used were meticulusly selected after research reveal text heavy sites often lend a strong contrast between background and text. Observing other sites such as all recipes it was clear that a clean, soft pallet background enabled more engaging text colours.
 
-The background colour of pale pink was chosen to contrast with images, icons and text as well as reduce eyestrain by being pale and not being an overtly bight colour on a screen. This colour isn’t used anywhere within the game itself.
+As seen colours assigned to the background are a soft yellow/grey. This couple with the bright red nav text and recipe collapsibles provides strong contrast.
 
-Menu buttons were assigned colours based on the generic understanding that green begins things and red stops, yellow for selecting. This is a simple and reused concept found in everyday life through various means.
+Once opened the background becomes white with black text, as staple and strong way to provide information without making the scren feel cluttered.
 
 
 ### Fonts
 
-For this project fonts were left as default as they were quite adequate to portray information. The main focus is the imagery and this is where I wanted the used to be drawn, having clear and concise scoring/instructions was all that was necessary.
-
-### Cards/Placeholders
-
-The cards were designed using GIMP 2.10, a free design tool that allowed me to create pixel specific sized squares and colour/label as I pleased. This worked very well as it allowed me to make adjustments as I developed the project and try different styles easily. It was also possible to set the compression amount upon exporting the files, enabling them to be the right size for web use.
-
+For this project fonts were left as default as they were quite adequate to portray information. The main focus is the information and this is where I wanted the used to be drawn, having clear and concise appearance was more than enough.
 
 ### Styling
 
-The general site layout is simple with little navigation needed. Placing the instructions at the bottom of the page enables mobile users to discover them is needed, however they can begin the instant the pages loads. This design enables access to the game with little fuss, no need to scroll the screen (apart from higher difficulty levels, screen size dependant). All of this comes together in allowing the game to present itself in a relaxed and smooth fashion which is ideal for parents and children trying to get to grips with what the site does.
+The general site layout is simple by design, drawing in the users attention with bright colours to areas of naviagtional interest. Important information is left clear and unintruded.
 
-The contact form is clean and to the point, little styling makes it a simple affair to write the message required and submit. Likewise subscribing to the newsletter is swift and simple for the same reasons.
+The edit forms are clean and to the point, little styling makes it a simple affair to fill in the required fields and submit. Likewise editing user profile details follows the same suit.
 
 
 ## Features
 
 ### Existing Features
 
-- feedback form
+- Recipe View
 <br>
-- Reset button
+- Recipe Create
 <br>
-- Start Button
+- Recipe Edit
 <br>
-- fully responsive
+- Recipe Delete
 <br>
-- Timer
+- Fully Responsive
 <br>
-- Game itself
+- User Registration
 <br>
-- Difficulty levels
+- User Detail Edit
 <br>
-- feedback modal
+- Recipe Search Functionality
 <br>
-- colours, letters and numbers on cards for childrens reading
+- Login/Out Functionality
 <br>
 <br>
 
 
 ### Navigation Bar
 
-Nav bar provides links to both pages and works interchangeably on both.
+Nav bar provides links to all pages and works interchangeably on all. It also provides host to the search functionality on all pages.
 
 ### Homepage
 
