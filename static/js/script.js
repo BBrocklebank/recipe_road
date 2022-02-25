@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 // Alerts user to session logout
 $(".logout_btn").click(function () {
-    alert('You have been logged out')
+    alert('You have been logged out');
 });
 
 // Unlocks profile details for editing

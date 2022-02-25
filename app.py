@@ -41,7 +41,7 @@ def register():
     Registers new users with db.
     """
     if request.method == 'POST':
-        #check if username or email exists in db
+        # check if username or email exists in db
         existing_username = mongo.db.users.find_one(
             {'username': request.form.get('username').lower()})
         existing_email = mongo.db.users.find_one(
@@ -75,7 +75,7 @@ def register():
         }
         mongo.db.users.insert_one(register_user)
 
-        #Places user in session
+        # Places user in session
         session['user'] = request.form.get('username').lower()
         flash('Registration Succesful!')
         return redirect(url_for('get_recipes', user=session['user']))
@@ -105,7 +105,8 @@ def login():
 
         if existing_user:
             # Ensure hashed password matches user input
-            if check_password_hash(existing_user['password'], request.form.get('password')):
+            if check_password_hash(
+                    existing_user['password'], request.form.get('password')):
                 session['user'] = request.form.get('username').lower()
                 name = request.form.get('username')
                 flash(f'Welcome, {name}')
@@ -131,10 +132,11 @@ def profile(user):
     Grab session user's information from db
     """
 
-    user = mongo.db.users.find_one({'username': session['user']}, {'password': 0})
+    user = mongo.db.users.find_one(
+        {'username': session['user']}, {'password': 0})
     recipes = list(mongo.db.recipes.find())
-     #Prevent users forcing to another profile
-     # and if cookie error takes user to login page
+    # Prevent users forcing to another profile
+    # and if cookie error takes user to login page
 
     if session['user']:
         return render_template('profile.html', user=user, recipes=recipes)
@@ -150,7 +152,7 @@ def edit_profile(user_id):
 
     if request.method == 'POST':
 
-        #Existing User data
+        # Existing User data
         user = mongo.db.users.find_one({'_id': ObjectId(user_id)})
 
         username_exists = mongo.db.users.find_one(
@@ -165,7 +167,8 @@ def edit_profile(user_id):
 
         # Do Username and Email need checking
         if user['email'] != request.form.get(
-            'email').lower() and session['user'] != request.form.get('username').lower():
+                'email').lower() and session['user'] != request.form.get(
+                    'username').lower():
 
             if username_exists and email_exists:
                 flash('Username and email already exist')
@@ -181,10 +184,10 @@ def edit_profile(user_id):
 
             else:
                 edit_user = {
-                'first_name': request.form.get('first_name').lower(),
-                'last_name': request.form.get('last_name').lower(),
-                'username': request.form.get('username').lower(),
-                'email': request.form.get('email').lower()
+                    'first_name': request.form.get('first_name').lower(),
+                    'last_name': request.form.get('last_name').lower(),
+                    'username': request.form.get('username').lower(),
+                    'email': request.form.get('email').lower()
                 }
                 session['user'] = request.form.get('username').lower()
 
@@ -196,9 +199,9 @@ def edit_profile(user_id):
 
             else:
                 edit_user = {
-                'first_name': request.form.get('first_name').lower(),
-                'last_name': request.form.get('last_name').lower(),
-                'username': request.form.get('username').lower()
+                    'first_name': request.form.get('first_name').lower(),
+                    'last_name': request.form.get('last_name').lower(),
+                    'username': request.form.get('username').lower()
                 }
                 session['user'] = request.form.get('username').lower()
 
@@ -210,9 +213,9 @@ def edit_profile(user_id):
 
             else:
                 edit_user = {
-                'first_name': request.form.get('first_name').lower(),
-                'last_name': request.form.get('last_name').lower(),
-                'email': request.form.get('email').lower()
+                    'first_name': request.form.get('first_name').lower(),
+                    'last_name': request.form.get('last_name').lower(),
+                    'email': request.form.get('email').lower()
                 }
 
         else:
@@ -221,7 +224,8 @@ def edit_profile(user_id):
                 'last_name': request.form.get('last_name').lower(),
                 }
 
-        mongo.db.users.update_one({"_id": ObjectId(user_id)}, {"$set": edit_user})
+        mongo.db.users.update_one(
+            {"_id": ObjectId(user_id)}, {"$set": edit_user})
 
         flash('Update Succesful!')
 
@@ -280,12 +284,14 @@ def edit_recipe(recipe_id):
             'steps5': request.form.get('steps5'),
             'created_by': session['user']
         }
-        mongo.db.recipes.update_one({"_id": ObjectId(recipe_id)}, {"$set": submit})
+        mongo.db.recipes.update_one(
+            {"_id": ObjectId(recipe_id)}, {"$set": submit})
         flash("Recipe Successfully Updated")
 
     recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
     cuisines = mongo.db.cuisines.find().sort('cuisine_name', 1)
-    return render_template('edit_recipe.html', recipe=recipe, cuisines=cuisines)
+    return render_template(
+        'edit_recipe.html', recipe=recipe, cuisines=cuisines)
 
 
 @app.route('/delete_recipe/<recipe_id>')
