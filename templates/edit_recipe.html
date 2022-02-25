@@ -106,9 +106,10 @@
                         <ol class="flow-text">
                             {% for step in recipe.steps %}
                             <li>
-                                <input class="validate flow-text" type="text" maxlength="100" minlength="3"
-                                        value="{{ step.capitalize() }}" id="steps"
-                                            name='steps' required value='{{ step.capitalize() }}'>
+                                <textarea id="steps" name='steps' minlength="10" maxlength="100"
+                                    class="materialize-textarea validate" required>
+                                        {{- step.capitalize() -}}
+                                </textarea>
                                 <label hidden for="steps">steps</label>
                             </li>
                             {% endfor %}
