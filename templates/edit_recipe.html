@@ -82,13 +82,11 @@
                      <div class="row">
                         <i class="fas fa-carrot flow-text">&nbsp;&nbsp;Ingredients:</i>
                         <div class="input-field">
-                        {% for ingredient in recipe.ingredients %}
-                                <div class="input-field col s12">
-                                    <input placeholder="" maxlength="200" name="ingredients" minlength="3" id="ingredients"
-                                        value="{{ ingredient.capitalize() }}" type="text" class="flow-text validate" required>
-                                    <label for="ingredients">Ingredients</label>
-                                  </div>
-                        {% endfor %}
+                            <div class="input-field col s12">
+                                <input placeholder="" maxlength="200" name="ingredients" minlength="3" id="ingredients"
+                                    value="{{ recipe.ingredients.capitalize() }}" type="text" class="flow-text validate" required>
+                                <label for="ingredients">Ingredients</label>
+                                </div>
                         </div>
                     </div>
                     <br>
@@ -98,7 +96,7 @@
                           <i class="fas fa-align-left prefix"></i>
                           <textarea id="steps1" name='steps1' minlength="5" maxlength="200"
                               class="materialize-textarea validate" required>
-                                      {{- recipe.steps_one -}}
+                                      {{- recipe.steps1 -}}
                           </textarea>
                           <label for="steps1">Step1</label>
                         </div>
@@ -109,7 +107,7 @@
                           <i class="fas fa-align-left prefix"></i>
                           <textarea id="steps2" name='steps2' minlength="5" maxlength="200"
                               class="materialize-textarea validate" required>
-                                      {{- recipe.steps_two -}}
+                                      {{- recipe.steps2 -}}
                           </textarea>
                           <label for="steps2">Step2</label>
                         </div>
@@ -120,7 +118,7 @@
                           <i class="fas fa-align-left prefix"></i>
                           <textarea id="steps3" name='steps3' minlength="5" maxlength="200"
                               class="materialize-textarea validate" required>
-                                      {{- recipe.steps_three -}}
+                                      {{- recipe.steps3 -}}
                           </textarea>
                           <label for="steps3">Step3</label>
                         </div>
@@ -131,7 +129,7 @@
                           <i class="fas fa-align-left prefix"></i>
                           <textarea id="steps4" name='steps4' minlength="5" maxlength="200"
                               class="materialize-textarea validate" required>
-                                      {{- recipe.steps_four -}}
+                                      {{- recipe.steps4 -}}
                           </textarea>
                           <label for="steps4">Step4</label>
                         </div>
@@ -142,7 +140,7 @@
                           <i class="fas fa-align-left prefix"></i>
                           <textarea id="steps5" name='steps5' minlength="5" maxlength="200"
                               class="materialize-textarea validate" required>
-                                      {{- recipe.steps_five -}}
+                                      {{- recipe.steps5 -}}
                           </textarea>
                           <label for="steps5">Step5</label>
                         </div>
