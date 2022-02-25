@@ -229,12 +229,40 @@ def edit_profile(user_id):
     return redirect(url_for('profile', user=user))
 
 
+@app.route('/add_recipe', methods=['GET', 'POST'])
+def add_recipe():
+    """
+    Add recipe
+    """
+    if request.method == 'POST':
+
+        recipe = {
+            'cuisine_name': request.form.get('cuisine_name'),
+            'recipe_name': request.form.get('recipe_name'),
+            'recipe_description': request.form.get('recipe_description'),
+            'serves': request.form.get('serves'),
+            'requirements': request.form.get('requirements'),
+            'ingredients': request.form.get('ingredients'),
+            'steps1': request.form.get('steps1'),
+            'steps2': request.form.get('steps2'),
+            'steps3': request.form.get('steps3'),
+            'steps4': request.form.get('steps4'),
+            'steps5': request.form.get('steps5'),
+            'created_by': session['user']
+        }
+        mongo.db.recipes.insert_one(recipe)
+        flash('Recipe Successfully Added')
+        return redirect(url_for('get_recipes'))
+
+    cuisines = mongo.db.cuisines.find().sort('cuisine_name', 1)
+    return render_template('add_recipe.html', cuisines=cuisines)
+
+
 @app.route('/edit_recipe/<recipe_id>', methods=['GET', 'POST'])
 def edit_recipe(recipe_id):
     """
     Update recipe
     """
-
 
     if request.method == 'POST':
         submit = {

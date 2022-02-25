@@ -9,7 +9,7 @@
             <h3 class="red-text center-align">Edit Recipe</h3>
 
             <div class="row card-panel grey lighten-5">
-                <form class="col s12" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
+                <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}">
 
                     <!--Cuisine Selection-->
                     <div class="row">
@@ -18,11 +18,7 @@
                             <select id='cuisine_name' name="cuisine_name" class='validate' required>
                                 <option value="" disabled>Choose Cuisine</option>
                                 {% for cuisine in cuisines %}
-                                    {% if cuisine.cuisine_name == recipe.cuisine_name %}
                                     <option value="{{ cuisine.cuisine_name.capitalize() }}" selected>"{{ cuisine.cuisine_name.capitalize() }}"</option>
-                                    {% else %}
-                                    <option value="{{ cuisine.cuisine_name.capitalize() }}">"{{ cuisine.cuisine_name.capitalize() }}"</option>
-                                    {% endif %}
                                 {% endfor %}
                             </select>
                             <label for='cuisine_name'> Recipe Cuisine</label>
@@ -33,7 +29,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="fas fa-pencil-alt prefix"></i>
-                            <input id="recipe_name" name='recipe_name' minlength="5" maxlength="50" value="{{ recipe.recipe_name }}" type="text"
+                            <input id="recipe_name" name='recipe_name' minlength="5" maxlength="50" value="" type="text"
                             class="validate" required>
                             <label for="recipe_name">Recipe Name</label>
                         </div>
@@ -45,7 +41,6 @@
                             <i class="fas fa-align-left prefix"></i>
                             <textarea id="recipe_description" name='recipe_description' minlength="5" maxlength="200"
                                 class="materialize-textarea validate" required>
-                                        {{- recipe.recipe_description -}}
                             </textarea>
                             <label for="recipe_description">Recipe Description</label>
                         </div>
@@ -57,7 +52,6 @@
                             <i class="fas fa-utensils prefix"></i>
                             <textarea id="serves" name='serves' minlength="1" maxlength="2"
                                 class="materialize-textarea validate" required>
-                                        {{- recipe.serves -}}
                             </textarea>
                             <label for="recipe_description">Serves</label>
                         </div>
@@ -70,20 +64,21 @@
                         <div class="input-field">
                                 <div class="input-field col s12">
                                     <input placeholder="" name="requirements" maxlength="200" minlength="3" id="requirements"
-                                        value="{{ recipe.requirements.capitalize() }}" type="text" class="flow-text validate" required>
+                                        value="" type="text" class="flow-text validate" required>
                                     <label for="requirements">Requirements</label>
                                   </div>
                         </div>
                     </div>
                     <br>
                     <br>
+
                      <!-- Ingredients -->
                      <div class="row">
                         <i class="fas fa-carrot flow-text">&nbsp;&nbsp;Ingredients:</i>
                         <div class="input-field">
                             <div class="input-field col s12">
                                 <input placeholder="" maxlength="200" name="ingredients" minlength="3" id="ingredients"
-                                    value="{{ recipe.ingredients.capitalize() }}" type="text" class="flow-text validate" required>
+                                    value="" type="text" class="flow-text validate" required>
                                 <label for="ingredients">Ingredients</label>
                                 </div>
                         </div>
@@ -95,7 +90,6 @@
                           <i class="fas fa-align-left prefix"></i>
                           <textarea id="steps1" name='steps1' minlength="5" maxlength="200"
                               class="materialize-textarea validate" required>
-                                      {{- recipe.steps1 -}}
                           </textarea>
                           <label for="steps1">Step1</label>
                         </div>
@@ -106,7 +100,6 @@
                           <i class="fas fa-align-left prefix"></i>
                           <textarea id="steps2" name='steps2' minlength="5" maxlength="200"
                               class="materialize-textarea validate" required>
-                                      {{- recipe.steps2 -}}
                           </textarea>
                           <label for="steps2">Step2</label>
                         </div>
@@ -117,7 +110,6 @@
                           <i class="fas fa-align-left prefix"></i>
                           <textarea id="steps3" name='steps3' minlength="5" maxlength="200"
                               class="materialize-textarea validate" required>
-                                      {{- recipe.steps3 -}}
                           </textarea>
                           <label for="steps3">Step3</label>
                         </div>
@@ -128,7 +120,6 @@
                           <i class="fas fa-align-left prefix"></i>
                           <textarea id="steps4" name='steps4' minlength="5" maxlength="200"
                               class="materialize-textarea validate" required>
-                                      {{- recipe.steps4 -}}
                           </textarea>
                           <label for="steps4">Step4</label>
                         </div>
@@ -139,7 +130,6 @@
                           <i class="fas fa-align-left prefix"></i>
                           <textarea id="steps5" name='steps5' minlength="5" maxlength="200"
                               class="materialize-textarea validate" required>
-                                      {{- recipe.steps5 -}}
                           </textarea>
                           <label for="steps5">Step5</label>
                         </div>
