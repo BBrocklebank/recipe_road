@@ -9,8 +9,7 @@
             <h3 class="red-text center-align">Add Recipe</h3>
 
             <div class="row card-panel grey lighten-5">
-                <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}">
-
+                <form class="col s12" name="add_recipe" method="POST" action="{{ url_for('add_recipe') }}">
                     <!--Cuisine Selection-->
                     <div class="row">
                         <div class="input-field col s12">
@@ -86,7 +85,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                           <i class="fas fa-align-left prefix"></i>
-                          <textarea id="steps1" name='steps1' minlength="5" maxlength="200"
+                          <textarea id="steps1" name='steps1' minlength="5" maxlength="1000"
                               class="materialize-textarea validate" required></textarea>
                           <label for="steps1">Step1</label>
                         </div>
@@ -95,9 +94,8 @@
                     <div class="row">
                         <div class="input-field col s12">
                           <i class="fas fa-align-left prefix"></i>
-                          <textarea id="steps2" name='steps2' minlength="5" maxlength="200"
-                              class="materialize-textarea validate" required>
-                          </textarea>
+                          <textarea id="steps2" name='steps2' minlength="5" maxlength="1000"
+                              class="materialize-textarea validate" required></textarea>
                           <label for="steps2">Step2</label>
                         </div>
                       </div>
@@ -105,9 +103,8 @@
                     <div class="row">
                         <div class="input-field col s12">
                           <i class="fas fa-align-left prefix"></i>
-                          <textarea id="steps3" name='steps3' minlength="5" maxlength="200"
-                              class="materialize-textarea validate" required>
-                          </textarea>
+                          <textarea id="steps3" name='steps3' minlength="5" maxlength="1000"
+                              class="materialize-textarea validate" required></textarea>
                           <label for="steps3">Step3</label>
                         </div>
                       </div>
@@ -115,9 +112,8 @@
                     <div class="row">
                         <div class="input-field col s12">
                           <i class="fas fa-align-left prefix"></i>
-                          <textarea id="steps4" name='steps4' minlength="5" maxlength="200"
-                              class="materialize-textarea validate" required>
-                          </textarea>
+                          <textarea id="steps4" name='steps4' minlength="5" maxlength="1000"
+                              class="materialize-textarea validate" required></textarea>
                           <label for="steps4">Step4</label>
                         </div>
                       </div>
@@ -125,9 +121,8 @@
                     <div class="row">
                         <div class="input-field col s12">
                           <i class="fas fa-align-left prefix"></i>
-                          <textarea id="steps5" name='steps5' minlength="5" maxlength="200"
-                              class="materialize-textarea validate" required>
-                          </textarea>
+                          <textarea id="steps5" name='steps5' minlength="5" maxlength="1000"
+                              class="materialize-textarea validate" required></textarea>
                           <label for="steps5">Step5</label>
                         </div>
                       </div>
@@ -138,10 +133,10 @@
                         <div class="col s12 center-align">
                             <!--cancel button-->
                             <a href="{{ url_for('get_recipes') }}" class="btn-large red text-shadow">
-                            Cancel <i class="fas fa-times-circle right"></i>
+                                Cancel <i class="fas fa-times-circle right"></i>
                             </a>
                             <button type="submit" class="btn-large light-blue darken-1 text-shadow">
-                            Add Recipe <i class="fas fa-edit right"></i>
+                                Add Recipe <i class="fas fa-edit right"></i>
                             </button>
                         </div>
                     </div>
