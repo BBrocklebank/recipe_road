@@ -43,7 +43,7 @@
                             <div class='col s12 m10 offset-m1 xl10 offset-xl1'>
                                 <!-- Title -->
                                 <div class="row red-text center-align flow-text">
-                                    <strong>{{ recipe.recipe_name }}</strong>
+                                    <strong>{{ recipe.recipe_name.capitalize() }}</strong>
                                 </div>
                                 <br>
                                 <!-- Desciption -->
@@ -62,13 +62,11 @@
                                 <div class="row">
                                     <i class="fas fa-tools flow-text">&nbsp;&nbsp;Requirements:</i>
                                     <ul class="recipe_list">
-                                    {% for requirement in recipe.requirements %}
                                         <li class="recipe_li">
                                             <div class="chip chip_collapsible">
-                                                <p class="flow-text">{{ requirement.capitalize() }}</p>
+                                                <p class="flow-text">{{ recipe.requirements.capitalize() }}</p>
                                             </div>
                                         </li>
-                                    {% endfor %}
                                     </ul>
                                 </div>
                                 <br>
@@ -77,13 +75,11 @@
                                 <div class="row">
                                     <i class="fas fa-carrot flow-text">&nbsp;&nbsp;Ingredients:</i>
                                     <ul class="recipe_list">
-                                    {% for ingredient in recipe.ingredients %}
                                         <li class="recipe_li">
                                             <div class="chip chip_collapsible">
-                                                <p class="flow-text">{{ ingredient.capitalize() }}</p>
+                                                <p class="flow-text">{{ recipe.ingredients.capitalize() }}</p>
                                             </div>
                                         </li>
-                                    {% endfor %}
                                     </ul>
                                 </div>
                                 <br>
@@ -91,13 +87,11 @@
                                 <!-- Steps -->
                                 <div class="row">
                                     <i class="fas fa-list flow-text">&nbsp;&nbsp;Steps:</i>
-                                    <ol class="flow-text">
-                                        {% for step in recipe.steps %}
+                                    <ul class="flow-text">
                                         <li>
-                                            <p>{{ step }}</p>
+                                            <p>{{ recipe.steps }}</p>
                                         </li>
-                                        {% endfor %}
-                                    </ol>
+                                    </ul>
                                 </div>
                                 {% if session.user|lower == recipe.created_by|lower %}
                                 <!-- Link to users profile -->

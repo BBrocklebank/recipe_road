@@ -33,6 +33,7 @@ $(document).ready(function () {
         minLength: 1
         }
     });
+    $('select').formSelect();
 });
 
 // List of Python flash messages

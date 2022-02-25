@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
+
 <main>
     <div class="row">
         <div class="col s12 m10 xl8 offset-m1 offset-xl2">
@@ -66,55 +67,87 @@
                     <!-- Requirements -->
                     <div class="row">
                         <i class="fas fa-tools flow-text">&nbsp;&nbsp;Requirements:</i>
-                        <ul class="recipe_list">
-                        {% for requirement in recipe.requirements %}
-                            <li class="recipe_li">
-                                <div class="chip chip_collapsible">
-                                    <input class="validate flow-text" type="text" maxlength="10" minlength="3"
-                                        value="{{ requirement.capitalize() }}" id="requirements"
-                                            name='requirements' required value='{{ requirement.capitalize() }}'>
-                                    <label hidden for="requiremnts">requirements</label>
-                                </div>
-                            </li>
-                        {% endfor %}
-                        </ul>
+                        <div class="input-field">
+                                <div class="input-field col s12">
+                                    <input placeholder="" name="requirements" maxlength="200" minlength="3" id="requirements"
+                                        value="{{ recipe.requirements.capitalize() }}" type="text" class="flow-text validate" required>
+                                    <label for="requirements">Requirements</label>
+                                  </div>
+                        </div>
                     </div>
                     <br>
                     <br>
 
-                    <!-- Ingredients -->
-                    <div class="row">
-                        <i class="fas fa-book flow-text">&nbsp;&nbsp;Ingredients:</i>
-                        <ul class="recipe_list">
-                        {% for ingredient in recipe.ingredients %}
-                            <li class="recipe_li">
-                                <div class="chip chip_collapsible">
-                                    <input class="validate flow-text" type="text" maxlength="10" minlength="3"
-                                        value="{{ ingredient.capitalize() }}" id="ingredients"
-                                            name='ingredients' required value='{{ ingredient.capitalize() }}'>
-                                    <label hidden for="ingredients">Ingredients</label>
-                                </div>
-                            </li>
-                        {% endfor %}
-                        </ul>
-                    </div>
-                    <br>
-
-                     <!-- Steps -->
+                     <!-- Ingredients -->
                      <div class="row">
-                        <i class="fas fa-list flow-text">&nbsp;&nbsp;Steps:</i>
-                        <ol class="flow-text">
-                            {% for step in recipe.steps %}
-                            <li>
-                                <textarea id="steps" name='steps' minlength="10" maxlength="100"
-                                    class="materialize-textarea validate" required>
-                                        {{- step.capitalize() -}}
-                                </textarea>
-                                <label hidden for="steps">steps</label>
-                            </li>
-                            {% endfor %}
-                        </ol>
+                        <i class="fas fa-carrot flow-text">&nbsp;&nbsp;Ingredients:</i>
+                        <div class="input-field">
+                        {% for ingredient in recipe.ingredients %}
+                                <div class="input-field col s12">
+                                    <input placeholder="" maxlength="200" name="ingredients" minlength="3" id="ingredients"
+                                        value="{{ ingredient.capitalize() }}" type="text" class="flow-text validate" required>
+                                    <label for="ingredients">Ingredients</label>
+                                  </div>
+                        {% endfor %}
+                        </div>
                     </div>
+                    <br>
+                    <!-- Steps -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <i class="fas fa-align-left prefix"></i>
+                          <textarea id="steps1" name='steps1' minlength="5" maxlength="200"
+                              class="materialize-textarea validate" required>
+                                      {{- recipe.steps_one -}}
+                          </textarea>
+                          <label for="steps1">Step1</label>
+                        </div>
+                      </div>
+                    <br>
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <i class="fas fa-align-left prefix"></i>
+                          <textarea id="steps2" name='steps2' minlength="5" maxlength="200"
+                              class="materialize-textarea validate" required>
+                                      {{- recipe.steps_two -}}
+                          </textarea>
+                          <label for="steps2">Step2</label>
+                        </div>
+                      </div>
+                    <br>
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <i class="fas fa-align-left prefix"></i>
+                          <textarea id="steps3" name='steps3' minlength="5" maxlength="200"
+                              class="materialize-textarea validate" required>
+                                      {{- recipe.steps_three -}}
+                          </textarea>
+                          <label for="steps3">Step3</label>
+                        </div>
+                      </div>
+                    <br>
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <i class="fas fa-align-left prefix"></i>
+                          <textarea id="steps4" name='steps4' minlength="5" maxlength="200"
+                              class="materialize-textarea validate" required>
+                                      {{- recipe.steps_four -}}
+                          </textarea>
+                          <label for="steps4">Step4</label>
+                        </div>
+                      </div>
+                    <br>
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <i class="fas fa-align-left prefix"></i>
+                          <textarea id="steps5" name='steps5' minlength="5" maxlength="200"
+                              class="materialize-textarea validate" required>
+                                      {{- recipe.steps_five -}}
+                          </textarea>
+                          <label for="steps5">Step5</label>
+                        </div>
+                      </div>
+                    <br>
 
                     <!-- Submit Button -->
                     <div class="row">
