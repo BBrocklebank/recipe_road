@@ -198,6 +198,21 @@
                                             </li>
                                         </ul>
                                     </div>
+                                    <!-- Suggestions -->
+                                    <div class="row">
+                                        <i class="fas fa-tools flow-text">&nbsp;&nbsp;Recipe Road Products:</i>
+                                        <ul class="recipe_list">
+                                            <li class="recipe_li">
+                                            <div class="chip chip_collapsible">
+                                                <p class="flow-text">Recipe road off a huge range of kitchen products and utensils!
+                                                    We've matched some of these with things you need for {{ recipe.recipe_name.capitalize() }}!</p>
+                                                <a href="https://www.procook.co.uk/" target='_blank' class="flow-text">{{ recipe.requirements.capitalize() }}</a>
+                                            </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <br>
+                                    <br>
                                     {% if session.user|lower == recipe.created_by|lower %}
                                     <!-- Link to users profile -->
                                     <div class="chip flow-text">
