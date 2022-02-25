@@ -95,12 +95,12 @@
                         &nbsp;&nbsp;
                         {% if session.user|lower == recipe.created_by|lower %}
                         <div class="chip flow-text">
-                            <img src="../static/images/bluethemedark.png" alt="user avatar">
+                            <img src="./static/images/blue.png" alt="user avatar">
                             <a href="{{ url_for('profile', user=session['user']) }}">{{ recipe.created_by }}</a>
                         </div>
                         {% else %}
                         <div class="chip flow-text">
-                            <img src="../static/images/bluethemedark.png" alt="user avatar">
+                            <img src="./static/images/blue.png" alt="user avatar">
                             {{ recipe.created_by }}
                         </div>
                         {% endif%}
@@ -216,7 +216,7 @@
                                     {% if session.user|lower == recipe.created_by|lower %}
                                     <!-- Link to users profile -->
                                     <div class="chip flow-text">
-                                        <img src="./static/images/bluethemedark.png" alt="user avatar">
+                                        <img src="./static/images/blue.png" alt="user avatar">
                                         <a href="{{ url_for('profile', user=session['user']) }}">{{ recipe.created_by }}</a>
                                     </div>
                                     <!-- Edit/Delete Buttons -->
@@ -231,7 +231,7 @@
                                     </div>
                                     {% else %}
                                         <div class="chip flow-text">
-                                            <img src="./static/images/bluethemedark.png" alt="user avatar">
+                                            <img src="./static/images/blue.png" alt="user avatar">
                                            {{ recipe.created_by }}
                                         </div>
                                     {% endif %}
