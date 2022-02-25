@@ -22,8 +22,8 @@
 
         <!-- Top Nav Bar -->
         <nav class="white">
-            <form action="{{ url_for('search') }}" method="POST">
-                <div class="nav-wrapper text-shadow">
+            <div class="nav-wrapper text-shadow"></div>
+                <form action="{{ url_for('search') }}" method="POST">
                     <a href="{{ url_for('get_recipes') }}" class="brand-logo red-text hide-on-med-and-down">Recipe
                         Road</a>
                     <a href="{{ url_for('get_recipes') }}" class="brand-logo red-text left hide-on-large-only">Recipe
@@ -31,7 +31,7 @@
 
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
 
-                    <ul class="right top-nav">
+                    <ul class="right hide-on-med-and-down top-nav">
                         <li class="search-box">
                             <div class="center row">
                                 <div class="col s12">
@@ -63,8 +63,8 @@
                         <li><a class="red-text register_btn modal-trigger" href="#modal1">Register</a></li>
                         {% endif %}
                     </ul>
-                </div>
-            </form>
+                </form>
+            </div>
         </nav>
 
         <!-- Sidebar Nav -->
