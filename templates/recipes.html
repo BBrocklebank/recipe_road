@@ -10,155 +10,156 @@
     </div>
 </div>
 
+{% if recipes|length > 0 %}
 {% for recipe in recipes %}
 <main>
     <div class="row">
         <div class="col s12 m10 offset-m1">
-            <ul class="collapsible">
-                <li>
-                    <div class="collapsible-header white-text red lighten-1 text-shadow">
-                        <i class="fas fa-caret-down"></i>
-                        <strong class="flow-text yellow-text">
-                            {{ recipe.recipe_name}}:
-                        </strong>
-                        &nbsp;&nbsp;
-                        <em class="flow-text">
-                            by
-                        </em>
-                        &nbsp;&nbsp;
-                        {% if session.user|lower == recipe.created_by|lower %}
-                        <div class="chip flow-text">
-                            <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
-                            <a href="{{ url_for('profile', user=session['user']) }}">{{ recipe.created_by }}</a>
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header white-text red lighten-1 text-shadow">
+                            <i class="fas fa-caret-down"></i>
+                            <strong class="flow-text yellow-text">
+                                {{ recipe.recipe_name}}:
+                            </strong>
+                            &nbsp;&nbsp;
+                            <em class="flow-text">
+                                by
+                            </em>
+                            &nbsp;&nbsp;
+                            {% if session.user|lower == recipe.created_by|lower %}
+                            <div class="chip flow-text">
+                                <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
+                                <a href="{{ url_for('profile', user=session['user']) }}">{{ recipe.created_by }}</a>
+                            </div>
+                            {% else %}
+                            <div class="chip flow-text">
+                                <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
+                                {{ recipe.created_by }}
+                            </div>
+                            {% endif%}
                         </div>
-                        {% else %}
-                        <div class="chip flow-text">
-                            <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
-                            {{ recipe.created_by }}
-                        </div>
-                        {% endif%}
-                    </div>
-                    <div class="collapsible-body">
-                        <div class="row">
-                            <div class='col s12 m10 offset-m1 xl10 offset-xl1'>
-                                <!-- Title -->
-                                <div class="row red-text center-align flow-text">
-                                    <strong>{{ recipe.recipe_name.capitalize() }}</strong>
-                                </div>
-                                <br>
-                                <!-- Desciption -->
-                                <div class="row center-align flow-text">
-                                    <p>{{ recipe.recipe_description }}</p>
-                                </div>
-                                <br>
-                                <br>
-                                <!-- Cuisine -->
-                                <div class="row">
-                                    <i class="fas fa-flag flow-text">&nbsp;&nbsp;Cuisine:&nbsp;{{ recipe.cuisine_name.capitalize() }}</i>
-                                </div>
-                                <br>
-                                <br>
-                                <!-- Serves -->
-                                <div class="row">
-                                    <i class="fas fa-utensils flow-text">&nbsp;&nbsp;Serves:&nbsp;{{ recipe.serves }}</i>
-                                </div>
-                                <br>
-                                <br>
-                                <!-- Requirements -->
-                                <div class="row">
-                                    <i class="fas fa-tools flow-text">&nbsp;&nbsp;Requirements:</i>
-                                    <ul class="recipe_list">
-                                        <li class="recipe_li">
-                                            <div class="chip chip_collapsible">
-                                                <p class="flow-text">{{ recipe.requirements.capitalize() }}</p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <br>
-                                <br>
-                                <!-- Ingredients -->
-                                <div class="row">
-                                    <i class="fas fa-carrot flow-text">&nbsp;&nbsp;Ingredients:</i>
-                                    <ul class="recipe_list">
-                                        <li class="recipe_li">
-                                            <div class="chip chip_collapsible">
-                                                <p class="flow-text">{{ recipe.ingredients.capitalize() }}</p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <br>
-                                <br>
-                                <!-- Steps -->
-                                <div class="row">
-                                    <i class="fas fa-list flow-text">&nbsp;&nbsp;Step1:</i>
-                                    <ul class="flow-text">
-                                        <li>
-                                            <p>{{ recipe.steps1 }}</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="row">
-                                    <i class="fas fa-list flow-text">&nbsp;&nbsp;Step2:</i>
-                                    <ul class="flow-text">
-                                        <li>
-                                            <p>{{ recipe.steps2 }}</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="row">
-                                    <i class="fas fa-list flow-text">&nbsp;&nbsp;Step3:</i>
-                                    <ul class="flow-text">
-                                        <li>
-                                            <p>{{ recipe.steps3 }}</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="row">
-                                    <i class="fas fa-list flow-text">&nbsp;&nbsp;Step4:</i>
-                                    <ul class="flow-text">
-                                        <li>
-                                            <p>{{ recipe.steps4 }}</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="row">
-                                    <i class="fas fa-list flow-text">&nbsp;&nbsp;Step5:</i>
-                                    <ul class="flow-text">
-                                        <li>
-                                            <p>{{ recipe.steps5 }}</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                {% if session.user|lower == recipe.created_by|lower %}
-                                <!-- Link to users profile -->
-                                <div class="chip flow-text">
-                                    <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
-                                    <a href="{{ url_for('profile', user=session['user']) }}">{{ recipe.created_by }}</a>
-                                </div>
-                                <!-- Edit/Delete Buttons -->
-                                <div class="right">
-                                    <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}"
-                                        class="waves-effect waves-light light-blue lighten-1 btn-large">Edit
-                                    </a>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="#modal2" class="modal-trigger recipe_delete right waves-light red
-                                        lighten-1 btn-large">Delete</a>
-                                </div>
-                                {% else %}
+                        <div class="collapsible-body">
+                            <div class="row">
+                                <div class='col s12 m10 offset-m1 xl10 offset-xl1'>
+                                    <!-- Title -->
+                                    <div class="row red-text center-align flow-text">
+                                        <strong>{{ recipe.recipe_name.capitalize() }}</strong>
+                                    </div>
+                                    <br>
+                                    <!-- Desciption -->
+                                    <div class="row center-align flow-text">
+                                        <p>{{ recipe.recipe_description }}</p>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <!-- Cuisine -->
+                                    <div class="row">
+                                        <i class="fas fa-flag flow-text">&nbsp;&nbsp;Cuisine:&nbsp;{{ recipe.cuisine_name.capitalize() }}</i>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <!-- Serves -->
+                                    <div class="row">
+                                        <i class="fas fa-utensils flow-text">&nbsp;&nbsp;Serves:&nbsp;{{ recipe.serves }}</i>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <!-- Requirements -->
+                                    <div class="row">
+                                        <i class="fas fa-tools flow-text">&nbsp;&nbsp;Requirements:</i>
+                                        <ul class="recipe_list">
+                                            <li class="recipe_li">
+                                                <div class="chip chip_collapsible">
+                                                    <p class="flow-text">{{ recipe.requirements.capitalize() }}</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <!-- Ingredients -->
+                                    <div class="row">
+                                        <i class="fas fa-carrot flow-text">&nbsp;&nbsp;Ingredients:</i>
+                                        <ul class="recipe_list">
+                                            <li class="recipe_li">
+                                                <div class="chip chip_collapsible">
+                                                    <p class="flow-text">{{ recipe.ingredients.capitalize() }}</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <!-- Steps -->
+                                    <div class="row">
+                                        <i class="fas fa-list flow-text">&nbsp;&nbsp;Step1:</i>
+                                        <ul class="flow-text">
+                                            <li>
+                                                <p>{{ recipe.steps1 }}</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="row">
+                                        <i class="fas fa-list flow-text">&nbsp;&nbsp;Step2:</i>
+                                        <ul class="flow-text">
+                                            <li>
+                                                <p>{{ recipe.steps2 }}</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="row">
+                                        <i class="fas fa-list flow-text">&nbsp;&nbsp;Step3:</i>
+                                        <ul class="flow-text">
+                                            <li>
+                                                <p>{{ recipe.steps3 }}</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="row">
+                                        <i class="fas fa-list flow-text">&nbsp;&nbsp;Step4:</i>
+                                        <ul class="flow-text">
+                                            <li>
+                                                <p>{{ recipe.steps4 }}</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="row">
+                                        <i class="fas fa-list flow-text">&nbsp;&nbsp;Step5:</i>
+                                        <ul class="flow-text">
+                                            <li>
+                                                <p>{{ recipe.steps5 }}</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    {% if session.user|lower == recipe.created_by|lower %}
+                                    <!-- Link to users profile -->
                                     <div class="chip flow-text">
                                         <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
-                                       {{ recipe.created_by }}
+                                        <a href="{{ url_for('profile', user=session['user']) }}">{{ recipe.created_by }}</a>
                                     </div>
-                                {% endif %}
+                                    <!-- Edit/Delete Buttons -->
+                                    <div class="right">
+                                        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}"
+                                            class="waves-effect waves-light light-blue lighten-1 btn-large">Edit
+                                        </a>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href="#modal2" class="modal-trigger recipe_delete right waves-light red
+                                            lighten-1 btn-large">Delete</a>
+                                    </div>
+                                    {% else %}
+                                        <div class="chip flow-text">
+                                            <img src="{{ url_for('static', filename='images/bluethemedark.png') }}" alt="user avatar">
+                                        {{ recipe.created_by }}
+                                        </div>
+                                    {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+                    </li>
+                </ul>
+            </div>
     </div>
     <div id="modal2" class="modal">
         <div class="modal-content">
@@ -169,4 +170,9 @@
     </div>
 </main>
 {% endfor %}
+{% else %}
+        <h3 class="center-align text-shadow red-text">
+            No Results Found
+        </h3>
+        {% endif %}
 {% endblock %}

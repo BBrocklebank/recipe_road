@@ -22,7 +22,7 @@
 
         <!-- Top Nav Bar -->
         <nav class="white">
-            <form>
+            <form action="{{ url_for('search') }}" method="POST">
                 <div class="nav-wrapper text-shadow">
                     <a href="{{ url_for('get_recipes') }}" class="brand-logo red-text hide-on-med-and-down">Recipe
                         Road</a>
@@ -31,36 +31,15 @@
 
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
 
-                    <ul class="hide-on-large-only right">
+                    <ul class="right top-nav">
                         <li class="search-box">
                             <div class="center row">
                                 <div class="col s12">
                                     <div class="center row" id="topbarsearch">
                                         <div class="input-field red-text">
-                                            <input type="text" placeholder="Find a Recipe" name="search"
-                                                id="search-lg autocomplete-input" class="autocomplete red-text"
-                                                aria-label="Search" required>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <button type="submit" name='search' class="btn-flat white">
-                                Search
-                            </button>
-                        </li>
-                    </ul>
-
-                    <ul class="hide-on-med-and-down right top-nav">
-                        <li class="search-box">
-                            <div class="center row">
-                                <div class="col s12">
-                                    <div class="center row" id="topbarsearch">
-                                        <div class="input-field red-text">
-                                            <input type="text" placeholder="Find a Recipe" name="search"
-                                                id="search-sml autocomplete-input" class="autocomplete red-text"
-                                                aria-label="Search" required>
+                                            <input type="text" placeholder="Find a Recipe" name="query"
+                                                id="query search-sml autocomplete-input" class="autocomplete red-text validate"
+                                                aria-label="Search">
                                         </div>
                                     </div>
                                 </div>
@@ -70,6 +49,9 @@
                             <button type="submit" name='search' class="btn-flat waves-effect">
                                 Search
                             </button>
+                        </li>
+                        <li class="col s12 m4">
+                            <a href="{{url_for('get_recipes')}}" class="red btn text-shadow">Reset</a>
                         </li>
                         <li><a href="{{ url_for('get_recipes') }}" class="red-text">Home</a></li>
                         {% if session.user %}

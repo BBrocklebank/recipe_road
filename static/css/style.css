@@ -5,7 +5,7 @@
 }
 
 .search-box {
-    width: 370px;
+    width: 300px;
 }
 
 .fa-bars {
@@ -69,3 +69,14 @@ body {
 /* Login Modal */
 
 /* Media Queries */
+@media only screen and (max-width: 1036px) {
+    .search-box {
+        width: 270px;
+    }
+  }
+
+@media only screen and (max-width: 994px) {
+    .search-box {
+        width: 100px;
+    }
+  }
