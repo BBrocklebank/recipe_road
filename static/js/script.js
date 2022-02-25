@@ -74,7 +74,6 @@ $(".login_btn, .logout_btn").click(function loginTrigger () {
 });
 
 $(".register_btn").click(function registerTrigger () {
-    console.log('register')
     $('.modal_title').text('Register');
     $('.modal_description').text('Create an account to share and edit your own unique recipes to the Recipe Road!');
     $('.form_name, .form_email, .password_check').show();
