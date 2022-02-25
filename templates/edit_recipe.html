@@ -13,7 +13,7 @@
                     <!--Cuisine Selection-->
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="fas fa-flag prefix light-blue-text text-darken-4 prefix"></i>
+                            <i class="fas fa-flag prefix"></i>
                             <select id='cuisine_name' name="cuisine_name" class='validate' required>
                                 <option value="" disabled>Choose Cuisine</option>
                                 {% for cuisine in cuisines %}
@@ -31,7 +31,7 @@
                     <!--Recipe Name-->
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="fas fa-pencil-alt prefix light-blue-text text-darken-4 prefix"></i>
+                            <i class="fas fa-pencil-alt prefix"></i>
                             <input id="recipe_name" name='recipe_name' minlength="5" maxlength="50" value="{{ recipe.recipe_name }}" type="text"
                             class="validate" required>
                             <label for="recipe_name">Recipe Name</label>
@@ -41,29 +41,78 @@
                     <!--Recipe Description-->
                     <div class="row">
                         <div class="input-field col s12">
-                            <i class="fas fa-align-left prefix light-blue-text text-darken-4 prefix"></i>
+                            <i class="fas fa-align-left prefix"></i>
                             <textarea id="recipe_description" name='recipe_description' minlength="5" maxlength="200"
                                 class="materialize-textarea validate" required>
                                         {{- recipe.recipe_description -}}
                             </textarea>
-                            <label for="task_description">Recipe Description</label>
+                            <label for="recipe_description">Recipe Description</label>
                         </div>
                     </div>
 
-                    <!--Requirements-->
+                    <!--Serves-->
                     <div class="row">
                         <div class="input-field col s12">
-                            <div class="chips">
-                                <input class="custom-class">
-                              </div>
+                            <i class="fas fa-utensils prefix"></i>
+                            <textarea id="serves" name='serves' minlength="1" maxlength="2"
+                                class="materialize-textarea validate" required>
+                                        {{- recipe.serves -}}
+                            </textarea>
+                            <label for="recipe_description">Serves</label>
                         </div>
                     </div>
+                    <br>
 
-                    <!--Is complete toggle-->
+                    <!-- Requirements -->
                     <div class="row">
-                        <div class="input-field col s12">
+                        <i class="fas fa-tools flow-text">&nbsp;&nbsp;Requirements:</i>
+                        <ul class="recipe_list">
+                        {% for requirement in recipe.requirements %}
+                            <li class="recipe_li">
+                                <div class="chip chip_collapsible">
+                                    <input class="validate flow-text" type="text" maxlength="10" minlength="3"
+                                        value="{{ requirement.capitalize() }}" id="requirements"
+                                            name='requirements' required value='{{ requirement.capitalize() }}'>
+                                    <label hidden for="requiremnts">requirements</label>
+                                </div>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    <br>
+                    <br>
 
-                        </div>
+                    <!-- Ingredients -->
+                    <div class="row">
+                        <i class="fas fa-book flow-text">&nbsp;&nbsp;Ingredients:</i>
+                        <ul class="recipe_list">
+                        {% for ingredient in recipe.ingredients %}
+                            <li class="recipe_li">
+                                <div class="chip chip_collapsible">
+                                    <input class="validate flow-text" type="text" maxlength="10" minlength="3"
+                                        value="{{ ingredient.capitalize() }}" id="ingredients"
+                                            name='ingredients' required value='{{ ingredient.capitalize() }}'>
+                                    <label hidden for="ingredients">Ingredients</label>
+                                </div>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    <br>
+
+                     <!-- Steps -->
+                     <div class="row">
+                        <i class="fas fa-list flow-text">&nbsp;&nbsp;Steps:</i>
+                        <ol class="flow-text">
+                            {% for step in recipe.steps %}
+                            <li>
+                                <input class="validate flow-text" type="text" maxlength="100" minlength="3"
+                                        value="{{ step.capitalize() }}" id="steps"
+                                            name='steps' required value='{{ step.capitalize() }}'>
+                                <label hidden for="steps">steps</label>
+                            </li>
+                            {% endfor %}
+                        </ol>
                     </div>
 
                     <!-- Submit Button -->
