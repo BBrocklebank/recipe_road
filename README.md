@@ -118,9 +118,9 @@ Following the path of simplicity care has been taken to allow the user to edit t
 <br>
 <br>
 
-### Sketches
+### Frontend Sketches
 
-These sketches were created at the very initial design phase following research. They represent idealised version of the site and include some concepts that did not make it into the final project. This is due to various reasons such as time constraints, feature priority and expereince/time effectivness.
+These sketches were created at the very initial design phase following research. They represent an idealised version of the site UX and general frontend. They include some concepts that did not make it into the final project. This is due to various reasons such as time constraints, feature priority and expereince/time effectivness.
 
 [Homepage Dektop](assets/readme/landing_concept.jpg)
 
@@ -134,13 +134,61 @@ These sketches were created at the very initial design phase following research.
 <br>
 
 
-### Sketches
+### Data Design Choices
 [Data Schema](assets/readme/schema.jpg)
 
-This sketch illustrates the data schema used for the project. It was designed early in the early stages of project developement. This was to aid developement time by providing a clear vision of how data would be handled by the server and frontend of the site.
+The data schema provided above is an early illustration of the data design undertaken for this fullstack application.
 
-The schema shows the relationshop between the database, flask and the various MongoDB collections and their stored data. This has been used to engineer and describe the exact data required by the site and how it's passed between frontend and backend.
+It was created in the early stages of project developement to provide a brief overview of how the Flask framework would interact with the chosen database management system (DBMS). It also begins to take note of some of the data tables and fields the application will require and how this could be normalised. As development planning progressed it became neceassary to develop this further and clearly define the data design.
 
+The first major step in the data design was to choose which kind of datatbase was best suited to this project. Weighing up the amount of potential data that could build over time, basic relationships between data tables and ease of use. I decided to choose a non-relational database or 'noSQL'. This was based upon the low number of relationships the data would realistically have and the fact that future plans were to scale up site usage, users and therefore data. Non relational databases handle data efficiently and can do so at massive scale. So long as they are stuctured well they do not require high amounts of maintenance.
+
+The DBMS I choose to host my database is MongoDB. An entirely server based system that doesn't require a local machine to store/query data. This suited my needs as I lacked the hardware to scale up a database myself. MongoDb stores data in a JSON format which can be controlled via Python making use of a library called pymongo.
+
+Users will interact with the UX and trigger backened python code that is communicated to MongoDB to create, read, update and delete data on the server. Data integrity will be maintianed via input validation to ensure only clean expected data is input into the system, preventing errors/unexpected behaviour.
+
+### Database Design
+
+Though technically a non-relational database by design, mongoDB makes use of primary, foreign and other keys much like an SQL relational database would. The use of keys in this sense represents relationships between data tables and values. To prevent redundancies, update anomalies and unnecessary duplication the design required normalisation.
+
+This was done in three stages, breaking down the data that is required into separate entities or tables and displaying the relationships between each.
+
+
+##### Un-Normal Form(UNF)
+
+Before normalisation, the data model existed as a flat table containing all fields as one entity. This has no structure and contains redundancies and duplication.
+
+![UNF Data Model](assets/readme/unf_erd.png)
+
+##### 1NF
+
+The first stage of normalisation saw the removal of repition in the database. Saving space and giving the model some structure. Allowing quieries to be faster and more efficient.
+
+Recipe (cuisine name, recipe name, recipe description, serves, requirements, ingredients, steps, created by)
+
+User (username, password, first name, last name, email)
+
+![1NF Data Model](assets/readme/1nf_erd.png)
+
+##### 2NF
+
+The second stage separats out attributes that will have a unique key. Giving further structure and defining entities. This again allows for easier quieries, more defined data handling/processing and effeciency. This is not to say that some data from one entity will not be present in another, as this is the nataure of the practical relations between entites in the model. Eg username from the user table will feat in the recipe table as created by. This is necessary to identify each recipes creater for display/search purposes. However the data will not be entered twice as different fields.
+
+Recipe (recipe id, cuisine name(from cuisine), recipe name, recipe description, serves, requirements, ingredients, steps, created by(from user))
+
+User (user id, username, password, first name, last name, email)
+
+Cuisine (cusiine id, cuisine name)
+
+![2NF Data Model](assets/readme/2nf_erd.png)
+
+##### 3NF
+
+The third and final stage brings about the final refined Entity Relationship Diagram (ERD). This is the data model or blue print to be used for desiigning the relational database and has removed duplication and redundancy to create a purpose designed database fit for purpose. As can be seen each table is defined with a primary key(pk). Users and Cuisines both have a one to many relationship with recipes. This is because one user may have many recipes associated with them, and every recipe must have a cuisine. The shared fields are docked with a foreign key label(fk) and the these fields are shown with a denormalised tag(dk) in their original tables. This depicts their relationship to another table.
+
+Also visible are the datatype and visual representations of the one to many relationship with the lines between tables.
+
+![3NF Data Model](assets/readme/3nf_erd.png)
 
 ### Wireframes
 
