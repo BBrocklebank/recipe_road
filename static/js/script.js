@@ -110,6 +110,7 @@ let deleteButton = $('.delete_trigger');
 let deleteModal = $('.delete_modal');
 let span = $('.close');
 
+// Close Delete Modal
 let closeSpan = function (){
     let spanClass = $(this).attr('class')
     let splitArray = spanClass.split("n");
