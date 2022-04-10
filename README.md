@@ -372,6 +372,10 @@ Fix: Altered version of font awesome to ensure unity across site
 
 Fix:removed jinga for loops in place for app route variables
 
+1.  Delete modal displayed without prompt for each user upon login
+
+Fix: Added entire javascript function to tag and identify each button/modal and manage display of each upon request
+
 
 ## Technologies Used
 
@@ -636,13 +640,13 @@ Test No | Test Feature | Expected Result | Actual | Pass/Fail
 11 | Edit User Details | User can edit own details on profile | | PASS
 12 | Edit User Details | Update fails if username exists | | PASS
 13 | Edit User Details | Update fails if emails exists | | PASS
-14 | Recipe Delete Modal | Recipe delete modal loads when required | Modal loads for each recipe on landing page load | FAIL
+14 | Recipe Delete Modal | Recipe delete modal loads when required | Modal loads for each recipe on landing page load | PASS
 15 | Recipe bar expands | Recipe bar expands, displaying recipe | | PASS
 16 | Cuisine Display | Correct cuisine displayed on recipe | | PASS
 17 | Cusine Display | Correct cuisine displayed on recipe edit page | Default recipe is displayed| FAIL
 18 | Recipe Update | All fields update correctly | | PASS
 19 | Site navbar links | Links function as expected | | PASS
-20 | Recipe Suggestions | Reciepe suggestions appear and links function | | Pass
+20 | Recipe Suggestions | Reciepe suggestions appear and links function | | PASS
 
 
 ### Black Box Testing Images
@@ -654,7 +658,7 @@ Test No | Test Feature | Expected Result | Actual | Pass/Fail
 [10](assets/readme/search_val.png)
 [11](assets/readme/profileedit_scr.png)
 [12-13](assets/readme/editfail_scr.png)
-[14](assets/readme/delete_fail.png)
+[14](assets/readme/delete_modal.png)
 [15](assets/readme/recipe_scr.png)
 [16](assets/readme/editfail_scr.png)
 [17](assets/readme/recipeed_scr.png)
@@ -680,8 +684,6 @@ Test No | Test Feature | Expected Result | Actual | Pass/Fail
 
 ### Known Bugs
 
- - Delete check screen appears after login, triggered for each recipe presenet on landing page. This is related to an issue whereby the form submit for login, triggers the delete button. Within the time constraints of the project I was unfortunatly unable to resolve this issue.
-  <br>
  - Cuisine doesn't display correctly while editing an existsing recipe. It does however submit correctly to the db and displays on a searched recipe and on recipes on the landing page
   <br>
 
