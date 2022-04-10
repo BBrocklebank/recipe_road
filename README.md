@@ -184,7 +184,11 @@ Cuisine (cusiine id, cuisine name)
 
 ##### 3NF
 
-The third and final stage brings about the final refined Entity Relationship Diagram (ERD). This is the data model or blue print to be used for desiigning the relational database and has removed duplication and redundancy to create a purpose designed database fit for purpose. As can be seen each table is defined with a primary key(pk). Users and Cuisines both have a one to many relationship with recipes. This is because one user may have many recipes associated with them, and every recipe must have a cuisine. The shared fields are docked with a foreign key label(fk) and the these fields are shown with a denormalised tag(dk) in their original tables. This depicts their relationship to another table.
+The third and final stage brings about the final refined Entity Relationship Diagram (ERD). This is the data model or blue print to be used for desiigning the relational database and has removed duplication and redundancy to create a purpose designed database fit for purpose.
+
+As can be seen each table is defined with a primary key(pk). Users and Cuisines both have a one to many relationship with recipes. This is because one user may have many recipes associated with them, and every recipe must have a cuisine. The shared fields are docked with a foreign key label(fk) and the these fields are shown with a denormalised tag(dk) in their original tables. This depicts their relationship to another table.
+
+The database is split for easy sorting of users, cuisines and recipes. For fast queries and updating it has been optimised to display recipes attached to users and recipes attached to cuisines. These are expected to be the most common queries and so optimisation will speed up searches of an eventual large data set.
 
 Also visible are the datatype and visual representations of the one to many relationship with the lines between tables.
 
@@ -438,6 +442,10 @@ Fix:removed jinga for loops in place for app route variables
 - Heroku
 
     - Used to publish application
+<br>
+- Hackolade
+
+    - Used to visualise database and relationships
 <br>
 
 ## Testing

@@ -139,7 +139,7 @@
                                         <ul class="recipe_list">
                                             <li class="recipe_li">
                                             <div class="chip chip_collapsible">
-                                                <p class="flow-text">Recipe road off a huge range of kitchen products and utensils!
+                                                <p class="flow-text">Recipe road offer a huge range of kitchen products and utensils!
                                                     We've matched some of these with things you need for {{ recipe.recipe_name.capitalize() }}!</p>
                                                 <a href="https://www.procook.co.uk/" target='_blank' class="flow-text">{{ recipe.requirements.capitalize() }}</a>
                                             </div>
@@ -160,8 +160,10 @@
                                             class="waves-effect waves-light light-blue lighten-1 btn-large">Edit
                                         </a>
                                         &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href="#modal2" class="modal-trigger recipe_delete right waves-light red
-                                            lighten-1 btn-large">Delete</a>
+                                        <!-- <a href="#modaltwo" class="modal-trigger  right waves-light red
+                                            lighten-1 btn-large">Delete</a> -->
+                                            <button id='' class="delete_trigger right waves-light red
+                                            lighten-1 btn-large">Delete</button>
                                     </div>
                                     {% else %}
                                         <div class="chip flow-text">
@@ -177,18 +179,29 @@
                 </ul>
             </div>
     </div>
-    <div id="modal2" class="modal">
+    <!-- <div id="modaltwo" class="modal">
         <div class="modal-content">
             <strong>Are you sure you want to delete this recipe? It cannot be undone.</strong>
-            <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="modal-trigger recipe_delete right waves-light red
+            <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class=" right waves-light red
                 lighten-1 btn-small">Delete</a>
         </div>
+    </div> -->
+    <!-- Delete Modal -->
+ <div id="" class="delete_modal">
+    <div class="modal-content_delete center-align">
+      <span class="close">&times;</span>
+      <strong>Are you sure you want to delete this recipe? It cannot be undone. new modal test</strong>
+      <div><a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="waves-light red
+      lighten-1 btn-small">Delete</a></div>
     </div>
-</main>
+</div>
+
 {% endfor %}
+
 {% else %}
         <h3 class="center-align text-shadow red-text">
             No Results Found
         </h3>
         {% endif %}
+</main>
 {% endblock %}

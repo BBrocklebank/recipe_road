@@ -99,6 +99,51 @@ $(".logout_btn").click(function () {
 // Unlocks profile details for editing
 $(".profile_edit").click(function () {
     $('#first_name, #last_name, #email, #username').removeAttr('readonly');
+});
+
+//___________________________Delete Modal
+
+let buttonNum = 0;
+let modalNum = 0;
+let spanNum = 0;
+let deleteButton = $('.delete_trigger');
+let deleteModal = $('.delete_modal');
+let span = $('.close');
+
+let closeSpan = function (){
+    let spanClass = $(this).attr('class')
+    let splitArray = spanClass.split("n");
+    let modal = document.getElementsByClassName(splitArray[1])[0];
+    modal.style.display = "none";
+}
+
+// Open selected modals
+let openModal = function (){
+    let buttonId = $(this).attr("id");
+    let modal = document.getElementsByClassName(buttonId)[0];
+    modal.style.display = "block";
+};
+
+//Give each modal unique class name
+$(deleteModal).each(function() {
+    modalNum++;
+    $(this).addClass(String(modalNum));
+})
+
+// Give each button unique id
+$(deleteButton).each(function() {
+    buttonNum++;
+    $(this).attr("id", buttonNum);
+    $(this).on('click', openModal);
+})
+
+//Give each span unique class name
+$(span).each(function() {
+    spanNum++;
+    $(this).addClass('span' + String(spanNum));
+    $(this).on('click', closeSpan);
+})
+
 
 // Materialize select validation bug fix from Code Institute
 validateMaterializeSelect();
@@ -128,5 +173,3 @@ function validateMaterializeSelect() {
         }
     });
 }
-
-});
